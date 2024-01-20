@@ -1,5 +1,11 @@
-import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
@@ -11,20 +17,42 @@ import PostDescription from "./components/Post/PostDescription";
 import CreateProfile from "./components/Profile/CreateProfile";
 import UpdateProfile from "./components/Profile/UpdateProfile";
 import Registration from "./components/Register/Register";
+import { authSuccess, fetchLoggedOutUser } from "./features/auth/authSlice";
 import Home from "./pages/Home";
 import Posts from "./pages/Posts";
 import Profile from "./pages/Profile";
 import PrivateRoutes from "./routes/PrivateRoutes";
 
 function App() {
-  return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const authCheck = () => {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        console.log(token);
+        dispatch(fetchLoggedOutUser());
+      } else {
+        const expireTime = new Date(localStorage.getItem("expireTime"));
+
+        if (expireTime <= new Date()) {
+          dispatch(fetchLoggedOutUser());
+        } else {
+          // const userId = localStorage.getItem("userId");
+          // console.log(token, userId);
+          dispatch(authSuccess(token));
+        }
+      }
+    };
+    authCheck();
+  }, []);
+
+  let routes = null;
+  if (isLoggedIn) {
+    routes = (
+      <>
         <Route path="/posts" element={<Posts />} />
         <Route path="/posts/create" element={<AddPost />} />
         <Route path="/posts/:postId" element={<PostDescription />} />
@@ -40,6 +68,25 @@ function App() {
             </PrivateRoutes>
           }
         />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </>
+    );
+  } else {
+    routes = (
+      <>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </>
+    );
+  }
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/home" element={<Home />} />
+        {routes}
       </Routes>
       <Footer />
     </Router>

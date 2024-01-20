@@ -13,6 +13,7 @@ const initialState = {
   isRegistered: false,
   profile: {},
   error: "",
+  token: null,
 };
 
 // async thunk
@@ -20,8 +21,8 @@ export const fetchLoggedInUser = createAsyncThunk(
   "auth/fetchLoggedInUser",
   async (data) => {
     const users = await getLoggedInUser(data);
-
-    return users;
+    // console.log(users.user);
+    return users.user;
   }
 );
 export const fetchRegisterUser = createAsyncThunk(
@@ -53,6 +54,10 @@ const authSlice = createSlice({
     },
     filters: (state, action) => {
       state.blogs = state.blogs.filter((blog) => blog.isSaved === true);
+    },
+    authSuccess: (state, action) => {
+      state.token = action.payload;
+      state.isLoggedIn = true;
     },
   },
 
@@ -107,4 +112,4 @@ const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
-export const { toggleSavedStatus, filters } = authSlice.actions;
+export const { toggleSavedStatus, filters, authSuccess } = authSlice.actions;

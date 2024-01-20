@@ -39,7 +39,7 @@ const Navbar = () => {
           />
         </form>
         <div>
-          {isLoggedIn && (
+          {isLoggedIn && user.role === "SELLER" && (
             <Link to="/posts/create" className="btn btn-ghost bg-blue-400">
               Add Post
             </Link>

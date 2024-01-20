@@ -1,10 +1,16 @@
 // GET /posts?_sort=views&_order=asc
 // GET /posts/1/comments?_sort=votes&_order=asc
-
+import { jwtDecode } from "jwt-decode";
 import axiosInstance from "../../utils/axios";
 
 export const getLoggedInUser = async (data) => {
   const respose = await axiosInstance.post(`/users/login`, data);
+  const token = respose.data.token;
+
+  localStorage.setItem("token", token);
+  let decoded = jwtDecode(respose.data.token);
+  const expireTime = new Date(decoded.exp * 1000);
+  localStorage.setItem("expireTime", expireTime);
 
   return respose.data;
 };

@@ -30,9 +30,7 @@ const createProfile = async (req, res) => {
 
     const profile = await prisma.profile.create({
       data: {
-        address,
-        phone,
-        images,
+        ...req.body,
         user: {
           connect: {
             id: req.user.id,

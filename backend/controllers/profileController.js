@@ -56,8 +56,7 @@ const updateProfile = async (req, res) => {
         userId: req.user.id,
       },
       data: {
-        address,
-        phone,
+        ...req.body,
       },
     });
     res.status(200).json(profile);

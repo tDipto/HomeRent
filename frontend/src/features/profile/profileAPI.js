@@ -4,7 +4,7 @@
 import axiosInstance from "../../utils/axios";
 
 export const createUserProfile = async (data) => {
-  const respose = await axiosInstance.post(`/profile/create`, data);
+  const respose = await axiosInstance.put(`/profile/edit`, data);
 
   return respose.data;
 };

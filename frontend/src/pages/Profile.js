@@ -20,10 +20,12 @@ const Profile = () => {
   const posts = user?.posts;
   const book = user?.book;
 
-  const image = profile?.images[0];
-  const address = profile?.address;
-  const phone = profile?.phone;
-  const createdAt = profile?.createdAt;
+  const image = user?.profile?.images[0];
+  const address = user?.profile?.address;
+  const phone = user?.profile?.phone;
+  const createdAt = user?.profile?.createdAt;
+
+  console.log(image);
 
   return (
     <div className="flex flex-row  w-[100%]  bg-slate-400 pt-1">
@@ -60,12 +62,12 @@ const Profile = () => {
               <span className="font-semibold">Phone:</span>
               {phone || "Not provided"}
             </p>
-            {createdAt && (
+            {/* {createdAt && (
               <div className="mt-6 text-sm text-gray-500">
                 <p>Profile Created: {formatTimestamp(createdAt)}</p>
               </div>
-            )}
-            {!profile && (
+            )} */}
+            {profile && (
               <div>
                 <button className=" p-2 min-w-full rounded-lg bg-blue-700">
                   <Link to="/profile/create">Update Profile</Link>

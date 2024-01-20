@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { createProfile } from "../../features/profile/profileSlice";
-import { api } from "../../utils/api";
-import axiosInstance from "../../utils/axios";
 
 const CreateProfile = () => {
   const navigate = useNavigate();
@@ -57,20 +55,21 @@ const CreateProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(createProfile(formData));
 
     try {
-      const response = await axiosInstance.post(`${api}/profile/create/`, {
-        ...formData,
-      });
-      if (response.data) {
-        navigate("/");
-        setFormData({
-          address: "",
-          images: [],
-          phone: "",
-        });
-      }
+      dispatch(createProfile(formData));
+      navigate("/profile");
+      // const response = await axiosInstance.put(`${api}/profile/edit`, {
+      //   ...formData,
+      // });
+      // if (response.data) {
+      //   navigate("/");
+      //   setFormData({
+      //     address: "",
+      //     images: [],
+      //     phone: "",
+      //   });
+      // }
     } catch (error) {
       console.error("Error posting data:", error);
     }
@@ -80,7 +79,7 @@ const CreateProfile = () => {
     <div className="w-[60%] h-screen mx-auto flex flex-row justify-center items-center">
       <form
         onSubmit={handleSubmit}
-        className=" w-[90vh] h-[40vh]  mx-auto my-5 p-4 bg-gray-100 rounded-lg"
+        className=" w-[90vh] h-auto  mx-auto my-5 p-4 bg-gray-100 rounded-lg"
       >
         <label>
           Address:

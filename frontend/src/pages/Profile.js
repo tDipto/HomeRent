@@ -18,7 +18,7 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(fetchUser());
-  }, []);
+  }, [dispatch]);
 
   const name = user?.name;
   const email = user?.email;

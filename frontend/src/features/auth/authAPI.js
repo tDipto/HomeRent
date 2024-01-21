@@ -11,6 +11,7 @@ export const getLoggedInUser = async (data) => {
   let decoded = jwtDecode(respose.data.token);
   const expireTime = new Date(decoded.exp * 1000);
   localStorage.setItem("expireTime", expireTime);
+  localStorage.setItem("role", respose.data.user.role);
 
   return respose.data;
 };

@@ -5,8 +5,8 @@ import { fetchLoggedOutUser } from "../../features/auth/authSlice";
 import { fetchUserProfile } from "../../features/profile/profileSlice";
 
 const Navbar = () => {
-  const { isLoggedIn, user } = useSelector((state) => state.auth);
-
+  const { isLoggedIn, user, role } = useSelector((state) => state.auth);
+  console.log(isLoggedIn, role);
   const image = user?.profile?.images;
   const profile = user?.profile | {};
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Navbar = () => {
           />
         </form>
         <div>
-          {isLoggedIn && user.role === "SELLER" && (
+          {isLoggedIn && role === "SELLER" && (
             <Link to="/posts/create" className="btn btn-ghost bg-blue-400">
               Add Post
             </Link>

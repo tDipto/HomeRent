@@ -14,6 +14,7 @@ const initialState = {
   profile: {},
   error: "",
   token: null,
+  role: null,
 };
 
 // async thunk
@@ -56,8 +57,9 @@ const authSlice = createSlice({
       state.blogs = state.blogs.filter((blog) => blog.isSaved === true);
     },
     authSuccess: (state, action) => {
-      state.token = action.payload;
+      state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.role = action.payload.role;
     },
   },
 

@@ -26,6 +26,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(fetchLoggedInUser(formData));
+    navigate("/");
     dispatch(fetchPosts());
 
     setMessage(error);
@@ -42,7 +43,6 @@ const Login = () => {
         password: formData.password,
       })
     );
-    navigate("/");
   }
   return (
     <div

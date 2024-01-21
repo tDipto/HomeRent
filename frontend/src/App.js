@@ -1,11 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Navigate,
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
@@ -32,7 +27,7 @@ function App() {
       const token = localStorage.getItem("token");
 
       if (!token) {
-        console.log(token);
+        // console.log(token);
         dispatch(fetchLoggedOutUser());
       } else {
         const expireTime = new Date(localStorage.getItem("expireTime"));
@@ -40,14 +35,14 @@ function App() {
         if (expireTime <= new Date()) {
           dispatch(fetchLoggedOutUser());
         } else {
-          // const userId = localStorage.getItem("userId");
+          const role = localStorage.getItem("role");
           // console.log(token, userId);
-          dispatch(authSuccess(token));
+          dispatch(authSuccess({ token, role }));
         }
       }
     };
     authCheck();
-  }, []);
+  }, [isLoggedIn]);
 
   let routes = null;
   if (isLoggedIn) {
@@ -68,7 +63,7 @@ function App() {
             </PrivateRoutes>
           }
         />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
       </>
     );
   } else {
@@ -76,7 +71,7 @@ function App() {
       <>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        {/* <Route path="*" element={<Navigate to="/login" replace />} /> */}
       </>
     );
   }

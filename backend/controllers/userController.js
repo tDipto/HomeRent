@@ -22,6 +22,16 @@ const createUser = async (req, res) => {
       },
     });
 
+    const profile = await prisma.profile.create({
+      data: {
+        user: {
+          connect: {
+            id: user.id,
+          },
+        },
+      },
+    });
+
     res.status(201).json(user);
   } catch (error) {
     res.status(400).json({ error: error.message });

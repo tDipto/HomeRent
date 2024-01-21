@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { createProfile } from "../../features/profile/profileSlice";
+import { updateProfile } from "../../features/profile/profileSlice";
 
 const CreateProfile = () => {
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ const CreateProfile = () => {
     e.preventDefault();
 
     try {
-      dispatch(createProfile(formData));
+      dispatch(updateProfile(formData));
       navigate("/profile");
       // const response = await axiosInstance.put(`${api}/profile/edit`, {
       //   ...formData,

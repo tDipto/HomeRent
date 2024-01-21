@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import registerImage from "../../assets/images/signup.svg";
+import { createANewProfile } from "../../features/profile/profileSlice";
 import axiosInstance from "../../utils/axios";
 const Registration = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -29,6 +32,9 @@ const Registration = () => {
     try {
       const response = await axiosInstance.post("/users/register", formData);
       setSuccessMessage("Registration successful!");
+
+      dispatch(createANewProfile(formData.name));
+      // const res = await axiosInstance.post("/profile/create");
       navigate("/login");
     } catch (error) {
       console.error("Error:", error.response.data);

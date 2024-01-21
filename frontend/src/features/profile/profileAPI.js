@@ -3,13 +3,20 @@
 
 import axiosInstance from "../../utils/axios";
 
-export const createUserProfile = async (data) => {
+export const updateUserProfile = async (data) => {
   const respose = await axiosInstance.put(`/profile/edit`, data);
 
   return respose.data;
 };
+
 export const getProfile = async () => {
   const respose = await axiosInstance.get(`/profile/`);
+
+  return respose.data;
+};
+
+export const createUserEmptyProfile = async (data) => {
+  const respose = await axiosInstance.post(`/profile/create`);
 
   return respose.data;
 };

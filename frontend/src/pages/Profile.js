@@ -25,8 +25,6 @@ const Profile = () => {
   const phone = user?.profile?.phone;
   const createdAt = user?.profile?.createdAt;
 
-  console.log(image);
-
   return (
     <div className="flex flex-row  w-[100%]  bg-slate-400 pt-1 mt-10">
       <div className="w-1/2 p-10 mr-1 bg-white justify-center items-center">

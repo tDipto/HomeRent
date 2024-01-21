@@ -17,7 +17,6 @@ import { authSuccess, fetchLoggedOutUser } from "./features/auth/authSlice";
 import Home from "./pages/Home";
 import Posts from "./pages/Posts";
 import Profile from "./pages/Profile";
-import PrivateRoutes from "./routes/PrivateRoutes";
 
 function App() {
   const { isLoggedIn } = useSelector((state) => state.auth);
@@ -57,14 +56,7 @@ function App() {
         <Route path="/books/:postId" element={<BookPost />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/create" element={<CreateProfile />} />
-        <Route
-          path="/profile/edit"
-          element={
-            <PrivateRoutes>
-              <UpdateProfile />
-            </PrivateRoutes>
-          }
-        />
+        <Route path="/profile/edit" element={<UpdateProfile />} />
         {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
       </>
     );

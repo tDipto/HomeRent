@@ -1,12 +1,12 @@
 import { format } from "date-fns";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import UserPostsDetails from "../components/Profile/UserPostsDetails";
+import { fetchUser } from "../features/auth/authSlice";
 
 const Profile = () => {
   const dispatch = useDispatch();
-
   const { isLoading, isError, error, isLoggedIn, user, isRegistered } =
     useSelector((state) => state.auth);
 
@@ -16,16 +16,20 @@ const Profile = () => {
     return format(new Date(timestamp), "yyyy-MM-dd HH:mm:ss");
   }
 
-  const name = profile?.user?.name;
-  const email = profile?.user?.email;
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, []);
+
+  const name = user?.name;
+  const email = user?.email;
   const role = user?.role;
   const posts = user?.posts;
   const book = user?.book;
 
-  const image = profile?.images[0];
-  const address = profile?.address;
-  const phone = profile?.phone;
-  const createdAt = profile?.createdAt;
+  const image = user?.profile?.images[0];
+  const address = user?.profile?.address;
+  const phone = user?.profile?.phone;
+  const createdAt = user?.profile?.createdAt;
 
   return (
     <div className="flex flex-row  w-[100%]  bg-slate-400 pt-1 mt-10">

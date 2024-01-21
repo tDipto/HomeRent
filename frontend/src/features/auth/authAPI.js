@@ -15,6 +15,13 @@ export const getLoggedInUser = async (data) => {
 
   return respose.data;
 };
+
+export const getUser = async () => {
+  const respose = await axiosInstance.get(`/users`);
+
+  return respose.data;
+};
+
 export const getRegisteredUser = async (data) => {
   const respose = await axiosInstance.post(`/users/register`, data);
 

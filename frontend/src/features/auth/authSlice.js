@@ -2,6 +2,7 @@ import {
   getLoggedInUser,
   getLoggedOutUser,
   getRegisteredUser,
+  getUser,
 } from "./authAPI.js";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
@@ -26,6 +27,13 @@ export const fetchLoggedInUser = createAsyncThunk(
     return users.user;
   }
 );
+
+export const fetchUser = createAsyncThunk("auth/fetchUser", async () => {
+  const users = await getUser();
+  // console.log(users);
+  return users;
+});
+
 export const fetchRegisterUser = createAsyncThunk(
   "auth/fetchRegisterUser",
   async (data) => {
@@ -81,6 +89,7 @@ const authSlice = createSlice({
         state.isError = true;
         state.error = action.error?.message;
       })
+
       .addCase(fetchRegisterUser.pending, (state) => {
         state.isError = false;
         state.isLoading = true;
@@ -109,6 +118,23 @@ const authSlice = createSlice({
         state.isError = true;
         state.error = action.error?.message;
         state.isLoggedIn = false;
+      })
+
+      .addCase(fetchUser.pending, (state) => {
+        state.isError = false;
+        state.isLoading = true;
+      })
+      .addCase(fetchUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRegistered = true;
+      })
+      .addCase(fetchUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.user = {};
+        state.isError = true;
+        state.error = action.error?.message;
       });
   },
 });

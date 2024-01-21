@@ -93,12 +93,13 @@ const getUser = async (req, res) => {
   const { id } = req.params;
   const user = await prisma.user.findUnique({
     where: {
-      id: id,
+      email: req.user.email,
     },
     include: {
       profile: true,
       book: true,
       posts: true,
+      comments: true,
     },
   });
   res.status(200).json(user);

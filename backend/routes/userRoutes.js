@@ -22,10 +22,10 @@ const router = express.Router();
 router.post("/users/register", createUser);
 router.post("/users/login", loginUser);
 router.get("/users/logout", logoutUser);
+router.get("/users", authMiddleware, verifyUser, getUser);
 
 // admin routes
 router.get("/admin/users/", authMiddleware, verifyUser, isAdmin, getAllUsers);
-router.get("/admin/users/:id", authMiddleware, verifyUser, isAdmin, getUser);
 router.put("/admin/users/:id", authMiddleware, verifyUser, isAdmin, updateUser);
 router.delete(
   "/admin/users/:id",

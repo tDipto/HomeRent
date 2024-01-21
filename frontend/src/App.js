@@ -10,7 +10,6 @@ import AddPost from "./components/Post/AddPost";
 import BookPost from "./components/Post/BookPost";
 import DeletePost from "./components/Post/DeletePost";
 import PostDescription from "./components/Post/PostDescription";
-import CreateProfile from "./components/Profile/CreateProfile";
 import UpdateProfile from "./components/Profile/UpdateProfile";
 import Registration from "./components/Register/Register";
 import { authSuccess, fetchLoggedOutUser } from "./features/auth/authSlice";
@@ -55,7 +54,7 @@ function App() {
         <Route path="/posts/:postId/delete" element={<DeletePost />} />
         <Route path="/books/:postId" element={<BookPost />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/profile/create" element={<CreateProfile />} />
+        {/* <Route path="/profile/create" element={<CreateProfile />} /> */}
         <Route path="/profile/edit" element={<UpdateProfile />} />
         {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
       </>

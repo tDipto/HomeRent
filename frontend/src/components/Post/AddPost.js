@@ -111,105 +111,156 @@ const AddPost = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className=" w-[90vh]  mx-auto my-5 p-4 bg-gray-100 rounded-lg"
-    >
-      <input
-        type="text"
-        name="title"
-        value={formData.title}
-        onChange={handleInputChange}
-        placeholder="Title"
-        className="w-full border rounded-md p-2 mb-4 text-black"
-      />
-      <input
-        type="number"
-        name="seatCapacity"
-        value={formData.seatCapacity}
-        onChange={handleInputChange}
-        placeholder="Seat Capacity"
-        className="w-full border rounded-md p-2 mb-4 text-black"
-      />
-      <input
-        type="number"
-        name="price"
-        value={formData.price}
-        onChange={handleInputChange}
-        placeholder="Price"
-        className="w-full border rounded-md p-2 mb-4 text-black"
-      />
-      <input
-        type="text"
-        name="type"
-        value={formData.type}
-        onChange={handleInputChange}
-        placeholder="Type"
-        className="w-full border rounded-md p-2 mb-4 text-black"
-      />
-
-      <input
-        type="text"
-        name="contact"
-        value={formData.contact}
-        onChange={handleInputChange}
-        placeholder="Contact"
-        className="w-full border rounded-md p-2 mb-4 text-black"
-      />
-      <textarea
-        name="details"
-        value={formData.details}
-        onChange={handleInputChange}
-        placeholder="Details"
-        className="w-full border rounded-md p-2 mb-4 text-black"
-        rows="4"
-      ></textarea>
-      <input
-        type="text"
-        name="location"
-        value={formData.location.toLowerCase().trim()}
-        onChange={handleInputChange}
-        placeholder="Location"
-        className="w-full border rounded-md p-2 mb-4 text-black"
-      />
-      <input
-        type="text"
-        name="coordinates"
-        value={formData.coordinates}
-        onChange={handleInputChange}
-        placeholder="Coordinates"
-        className="w-full border rounded-md p-2 mb-4 text-black"
-      />
-      <input
-        type="file"
-        onChange={handleImageUpload}
-        multiple
-        className="mb-4"
-      />
-
-      {loading && <p className="text-red-500">Uploading...</p>}
-      {<p className="text-red-600 m-3">{message}</p>}
-      {formData.photos.length > 0 && (
-        <div className="mb-4 flex flex-row">
-          {formData.photos.map((photo, index) => (
-            <img
-              key={index}
-              src={photo}
-              alt={`Photo_no ${index}`}
-              className="w-20 h-20 object-cover mr-2 mb-2"
-            />
-          ))}
-        </div>
-      )}
-
-      <button
-        type="submit"
-        disabled={loading}
-        className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded"
+    <div className=" pt-28">
+      <form
+        onSubmit={handleSubmit}
+        className="w-[90vh] mx-auto my-5 p-4 bg-gray-100 rounded-lg"
       >
-        Submit
-      </button>
-    </form>
+        <label htmlFor="title" className="block text-lg font-semibold mb-2">
+          Home Name:
+        </label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value={formData.title}
+          onChange={handleInputChange}
+          placeholder="Title"
+          className="w-full border rounded-md p-2 mb-4 text-black"
+        />
+
+        <label
+          htmlFor="seatCapacity"
+          className="block text-lg font-semibold mb-2"
+        >
+          Seat Capacity:
+        </label>
+        <input
+          type="number"
+          id="seatCapacity"
+          name="seatCapacity"
+          value={formData.seatCapacity}
+          onChange={handleInputChange}
+          placeholder="Seat Capacity"
+          className="w-full border rounded-md p-2 mb-4 text-black"
+        />
+
+        <label htmlFor="price" className="block text-lg font-semibold mb-2">
+          Price:
+        </label>
+        <input
+          type="number"
+          id="price"
+          name="price"
+          value={formData.price}
+          onChange={handleInputChange}
+          placeholder="Price"
+          className="w-full border rounded-md p-2 mb-4 text-black"
+        />
+
+        <label htmlFor="type" className="block text-lg font-semibold mb-2">
+          Type:
+        </label>
+        <input
+          type="text"
+          id="type"
+          name="type"
+          value={formData.type}
+          onChange={handleInputChange}
+          placeholder="Type"
+          className="w-full border rounded-md p-2 mb-4 text-black"
+        />
+
+        <label htmlFor="contact" className="block text-lg font-semibold mb-2">
+          Contact:
+        </label>
+        <input
+          type="text"
+          id="contact"
+          name="contact"
+          value={formData.contact}
+          onChange={handleInputChange}
+          placeholder="Contact"
+          className="w-full border rounded-md p-2 mb-4 text-black"
+        />
+
+        <label htmlFor="details" className="block text-lg font-semibold mb-2">
+          Details:
+        </label>
+        <textarea
+          id="details"
+          name="details"
+          value={formData.details}
+          onChange={handleInputChange}
+          placeholder="Details"
+          className="w-full border rounded-md p-2 mb-4 text-black"
+          rows="4"
+        ></textarea>
+
+        <label htmlFor="location" className="block text-lg font-semibold mb-2">
+          Location:
+        </label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          value={formData.location.toLowerCase().trim()}
+          onChange={handleInputChange}
+          placeholder="Location"
+          className="w-full border rounded-md p-2 mb-4 text-black"
+        />
+
+        <label
+          htmlFor="coordinates"
+          className="block text-lg font-semibold mb-2"
+        >
+          Coordinates:
+        </label>
+        <input
+          type="text"
+          id="coordinates"
+          name="coordinates"
+          value={formData.coordinates}
+          onChange={handleInputChange}
+          placeholder="Coordinates"
+          className="w-full border rounded-md p-2 mb-4 text-black"
+        />
+
+        <label htmlFor="image" className="block text-lg font-semibold mb-2">
+          Upload Image:
+        </label>
+        <input
+          type="file"
+          id="image"
+          onChange={handleImageUpload}
+          multiple
+          className="mb-4"
+        />
+
+        {loading && <p className="text-red-500">Uploading...</p>}
+        {<p className="text-red-600 m-3">{message}</p>}
+        {formData.photos.length > 0 && (
+          <div className="mb-4 flex flex-row">
+            {formData.photos.map((photo, index) => (
+              <img
+                key={index}
+                src={photo}
+                alt={`Photo_no ${index}`}
+                className="w-20 h-20 object-cover mr-2 mb-2"
+              />
+            ))}
+          </div>
+        )}
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="bg-custom1 text-white hover:bg-blue-700 text-black font-bold py-2 px-4 rounded"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 

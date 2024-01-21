@@ -1,13 +1,19 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../utils/api";
 import axiosInstance from "../../utils/axios";
 
 const CreateProfile = () => {
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+
+  const address = user?.profile?.address;
+  const phone = user?.profile?.phone;
+
   const [formData, setFormData] = useState({
-    address: "",
-    phone: "",
+    address: address,
+    phone: phone,
   });
 
   const handleInputChange = (e) => {
@@ -44,33 +50,36 @@ const CreateProfile = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className=" w-[90vh]  mx-auto my-5 p-4 bg-gray-100 rounded-lg"
-    >
-      <input
-        type="text"
-        name="address"
-        value={formData.address}
-        onChange={handleInputChange}
-        placeholder="Address"
-        className="w-full border rounded-md p-2 mb-4"
-      />
-      <input
-        type="text"
-        name="phone"
-        value={formData.phone}
-        onChange={handleInputChange}
-        placeholder="Phone"
-        className="w-full border rounded-md p-2 mb-4"
-      />
-      <button
-        type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    <div className="pt-28">
+      {/* {console.log(user)} */}
+      <form
+        onSubmit={handleSubmit}
+        className=" w-[90vh]  mx-auto my-5 p-4 bg-gray-100 rounded-lg"
       >
-        Update
-      </button>
-    </form>
+        <input
+          type="text"
+          name="address"
+          value={formData.address}
+          onChange={handleInputChange}
+          placeholder="Address"
+          className="w-full border rounded-md p-2 mb-4"
+        />
+        <input
+          type="text"
+          name="phone"
+          value={formData.phone}
+          onChange={handleInputChange}
+          placeholder="Phone"
+          className="w-full border rounded-md p-2 mb-4"
+        />
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Update
+        </button>
+      </form>
+    </div>
   );
 };
 

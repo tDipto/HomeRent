@@ -74,7 +74,7 @@ const Profile = () => {
             {profile && (
               <div>
                 <button className=" p-2 min-w-full rounded-lg bg-blue-700">
-                  <Link to="/profile/create">Update Profile</Link>
+                  <Link to="/profile/edit">Update Profile</Link>
                 </button>
               </div>
             )}

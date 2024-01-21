@@ -48,7 +48,7 @@ const PostDescription = () => {
 
   return (
     <>
-      <div className="mx-auto max-h-screen flex flex-row bg-slate-400 pt-20">
+      <div className="mx-auto  flex flex-row bg-slate-400 pt-20">
         <div className="w-[50%] bg-white p-8">
           {post.photos && post.photos.length > 0 && (
             <div className="mt-4">

@@ -15,7 +15,7 @@ const PostItem = ({ post }) => {
   } = post;
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+    <div className="max-w-sm rounded overflow-hidden shadow-lg  ">
       <img className=" w-[300px] h-[200px]" src={`${photos[0]}`} alt={title} />
       <div className="flex flex-row justify-around">
         <div className="px-6 py-4">

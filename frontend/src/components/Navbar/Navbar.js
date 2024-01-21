@@ -6,7 +6,7 @@ import { fetchUserProfile } from "../../features/profile/profileSlice";
 
 const Navbar = () => {
   const { isLoggedIn, user, role } = useSelector((state) => state.auth);
-  console.log(isLoggedIn, role);
+  // console.log(isLoggedIn, role);
   const image = user?.profile?.images;
   const profile = user?.profile | {};
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-white ">
+    <div className="navbar bg-custom text-black fixed top-0 w-full z-50">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl bg-gray">
           RentSpot : <small>Home Near CUET</small>
@@ -34,18 +34,18 @@ const Navbar = () => {
         <form className="form-control">
           <input
             type="text"
-            placeholder="search location"
+            placeholder="Search"
             className="input input-bordered w-100 md:w-auto bg-slate-50"
           />
         </form>
         <div>
           {isLoggedIn && role === "SELLER" && (
-            <Link to="/posts/create" className="btn btn-ghost bg-blue-400">
+            <Link to="/posts/create" className="btn btn-ghost bg-custom1">
               Add Post
             </Link>
           )}
           {!isLoggedIn && (
-            <Link to="/login" className="btn  btn-ghost bg-blue-400">
+            <Link to="/login" className="btn btn-ghost bg-blue-400">
               Login
             </Link>
           )}
@@ -77,13 +77,12 @@ const Navbar = () => {
               tabIndex={0}
               className="mt-3 z-[1] py-3 shadow menu menu-sm dropdown-content bg-white rounded-box w-60"
             >
-              <li className=" p-1">
+              <li className="p-1">
                 <button onClick={handleProfile} type="button">
                   Profile
                 </button>
               </li>
-
-              <li className=" p-1">
+              <li className="p-1">
                 <button onClick={handleLogout} type="button">
                   Logout
                 </button>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Sidebar from "../components/Sidebar/Sidebar";
+import blueBackgroundImage from "../assets/bg-img.jpg";
 import { fetchPosts } from "../features/posts/postsSlice";
 import Posts from "./Posts";
 
@@ -10,8 +10,15 @@ const Home = () => {
     dispatch(fetchPosts());
   });
   return (
-    <div className="flex h-screen">
-      <Sidebar />
+    <div
+      className="flex flex-col h-screen bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${blueBackgroundImage})`,
+        // Add blur effect
+      }}
+    >
+      {/* <Sidebar /> */}
+
       <Posts />
     </div>
   );

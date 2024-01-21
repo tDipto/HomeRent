@@ -28,7 +28,7 @@ const Profile = () => {
   console.log(image);
 
   return (
-    <div className="flex flex-row  w-[100%]  bg-slate-400 pt-1">
+    <div className="flex flex-row  w-[100%]  bg-slate-400 pt-1 mt-10">
       <div className="w-1/2 p-10 mr-1 bg-white justify-center items-center">
         <div className="flex flex-col">
           <div className="w-full rounded-full flex justify-center ">

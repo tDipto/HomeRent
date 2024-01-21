@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
+import Main from "./components/Main";
 import Navbar from "./components/Navbar/Navbar";
 import AddPost from "./components/Post/AddPost";
 import BookPost from "./components/Post/BookPost";
@@ -45,6 +46,7 @@ function App() {
   }, [isLoggedIn]);
 
   let routes = null;
+
   if (isLoggedIn) {
     routes = (
       <>
@@ -75,12 +77,13 @@ function App() {
       </>
     );
   }
+
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/home" element={<Home />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/home" element={<Home />} />
         {routes}
       </Routes>
       <Footer />

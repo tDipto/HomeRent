@@ -23,6 +23,7 @@ const Navbar = () => {
     navigate("/profile");
   };
 
+  
   return (
     <div className="navbar bg-custom text-black fixed top-0 w-full z-50">
       <div className="flex-1">

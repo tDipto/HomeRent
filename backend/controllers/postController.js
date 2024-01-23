@@ -7,6 +7,7 @@ const getAllPosts = async (req, res) => {
       include: {
         user: true,
         comments: true,
+        book: true,
       },
     });
     res.status(200).json(posts);

@@ -4,6 +4,9 @@ const cloudinary = require("../services/cloudinary");
 const getAllPosts = async (req, res) => {
   try {
     const posts = await prisma.post.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
       include: {
         user: true,
         comments: true,
@@ -16,6 +19,41 @@ const getAllPosts = async (req, res) => {
   }
 };
 
+const getAllPostsBySearch = async (req, res) => {
+  try {
+    const { q } = req.query;
+    const posts = await prisma.post.findMany({
+      where: {
+        OR: [
+          {
+            title: {
+              contains: q,
+              mode: "insensitive",
+            },
+          },
+          {
+            location: {
+              contains: q,
+              mode: "insensitive",
+            },
+          },
+          {
+            details: {
+              contains: q,
+              mode: "insensitive",
+            },
+          },
+        ],
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 // get a post by id
 const getPost = async (req, res) => {
   try {
@@ -146,4 +184,5 @@ module.exports = {
   updatePost,
   deletePost,
   getPost,
+  getAllPostsBySearch,
 };

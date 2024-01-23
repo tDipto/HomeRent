@@ -27,6 +27,14 @@
       {
         "name": "profile",
         "description": "Operations about user profile"
+      },
+      
+      {
+        "name": "books",
+        "description": "Operations about books"
+      }, {
+        "name": "search",
+        "description": "Operations about search"
       }
     ],
     "paths": {
@@ -634,7 +642,112 @@
                 }
               }
             }
-          }
+          },
+          "/books":{
+            "get": {
+                "tags": ["books"],
+                "summary": "Get all books",
+              "responses": {
+                "200": {
+                  "description": "List of books",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Book"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            },
+            "/books/{postId}":{
+                "post": {
+                    "tags": ["books"],
+                    "summary": "Create a new book",
+                    "parameters": [
+                      {
+                        "name": "postId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "requestBody": {
+                      "required": true,
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "$ref": "#/components/schemas/NewBook"
+                          }
+                        }
+                      }
+                    },
+                    "responses": {
+                      "201": {
+                        "description": "Book created successfully",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "$ref": "#/components/schemas/Book"
+                            }
+                          }
+                        }
+                      },
+                      "400": {
+                        "description": "Bad request",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "error": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+            },
+            "/posts/search": {
+                "get": {
+                    "tags": ["search"],
+                    "summary": "Search posts",
+                    "parameters": [
+                      {
+                        "name": "q",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "responses": {
+                      "200": {
+                        "description": "List of posts",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Post"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+            }
     },
     "components": {
         "schemas": {
@@ -657,6 +770,15 @@
                 }
               },
               "required": ["email", "name", "password"]
+            },
+            "NewBook":{
+              "type": "object",
+              "properties": {
+                "seat": {
+                  "type": "integer"
+                }
+              },
+              "required": ["seat"]
             },
             "User": {
               "type": "object",

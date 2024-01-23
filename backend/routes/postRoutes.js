@@ -5,6 +5,7 @@ const {
   updatePost,
   deletePost,
   getPost,
+  getAllPostsBySearch,
 } = require("../controllers/postController");
 const upload = require("../services/fileUpload");
 const {
@@ -17,6 +18,7 @@ const {
 const router = express.Router();
 
 router.get("/posts", getAllPosts);
+router.get("/posts/search", getAllPostsBySearch);
 router.post(
   "/posts/create",
   authMiddleware,

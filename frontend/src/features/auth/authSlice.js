@@ -15,7 +15,7 @@ const initialState = {
   isRegistered: false,
   profile: {},
   error: "",
-  allUser: {},
+  allUser: [],
   token: null,
   role: null,
 };

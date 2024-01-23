@@ -26,10 +26,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(fetchLoggedInUser(formData));
-    navigate("/");
+
     dispatch(fetchPosts());
 
     setMessage(error);
+    if (error !== null) {
+      navigate("/");
+    }
     setTimeout(() => {
       setMessage(null);
     }, 3000);

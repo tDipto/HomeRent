@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { fetchUser } from "../../features/auth/authSlice";
+import { fetchAllUsers, fetchUser } from "../../features/auth/authSlice";
 import { related } from "../../features/posts/postsSlice";
 import { api } from "../../utils/api";
 import axiosInstance from "../../utils/axios";
+
+import ShowBookedProfile from "../Profile/ShowBookedProfile";
 import RelatedPosts from "./RelatedPosts";
 
 async function fetchPosts(postId) {
@@ -55,16 +57,16 @@ const PostDescription = () => {
     });
     dispatch(related(postId));
     dispatch(fetchUser());
-    // dispatch(fetchAllUsers());
+    dispatch(fetchAllUsers());
   }, [postId, dispatch]);
 
   const bookeditems = post.book;
 
   let bookedId = bookeditems?.map((item) => item.userId);
-  // let userId = allUser?.map((item) => console.log(item));
-  console.log(allUser);
-  console.log(post.userId);
-  console.log(user.id);
+  let usersInBookedId =
+    allUser && bookedId
+      ? allUser.filter((user) => bookedId.includes(user.id))
+      : [];
 
   return (
     <>
@@ -160,6 +162,23 @@ const PostDescription = () => {
           </div>
         </div>
       </div>
+      {post.userId === user.id && (
+        <div>
+          <h3 className="bg-custom font-bold  font-serif  text-center p-3 ">
+            Booked Profiles
+          </h3>
+          <div className="text-center">
+            {usersInBookedId.length !== 0 ? (
+              usersInBookedId.map((profile) => (
+                <ShowBookedProfile profiles={profile} />
+              ))
+            ) : (
+              <p>No booked Student</p>
+            )}
+          </div>
+        </div>
+      )}
+
       <RelatedPosts />
     </>
   );

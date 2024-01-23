@@ -44,7 +44,7 @@ const DeletePost = () => {
 
   return (
     <div className="h-screen">
-      <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+      <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden pt-24">
         <div className="p-4">
           <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
           <div className="grid grid-cols-2 gap-4">

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import UserPostsDetails from "../components/Profile/UserPostsDetails";
 import { fetchUser } from "../features/auth/authSlice";
+import { fetchBookedPost } from "../features/books/booksSlice";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const Profile = () => {
     useSelector((state) => state.auth);
 
   const { profile } = useSelector((state) => state.profile);
+  const { books } = useSelector((state) => state.books);
 
   function formatTimestamp(timestamp) {
     return format(new Date(timestamp), "yyyy-MM-dd HH:mm:ss");
@@ -18,7 +20,8 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(fetchUser());
-  }, [dispatch]);
+    dispatch(fetchBookedPost());
+  }, []);
 
   const name = user?.name;
   const email = user?.email;
@@ -30,6 +33,8 @@ const Profile = () => {
   const address = user?.profile?.address;
   const phone = user?.profile?.phone;
   const createdAt = user?.profile?.createdAt;
+
+  console.log(posts);
 
   return (
     <div className="flex flex-row  w-[100%]  bg-slate-400 pt-1 mt-10">
@@ -88,13 +93,13 @@ const Profile = () => {
             <h1 className="text-center text-black bg-blue-500 p-5">
               Your Posted Property Lists:{" "}
             </h1>
-            {<UserPostsDetails posts={posts} />}
+            {<UserPostsDetails books={posts} />}
           </div>
         )}
         {role === "BUYER" && (
           <div>
             <h1>Your Booked Property Lists: </h1>
-            {<UserPostsDetails posts={book} />}
+            {<UserPostsDetails books={books.post} />}
           </div>
         )}
       </div>

@@ -34,8 +34,6 @@ const Profile = () => {
   const phone = user?.profile?.phone;
   const createdAt = user?.profile?.createdAt;
 
-  console.log(posts);
-
   return (
     <div className="flex flex-row  w-[100%]  bg-slate-400 pt-1 mt-10">
       <div className="w-1/2 p-10 mr-1 bg-white justify-center items-center">
@@ -99,7 +97,10 @@ const Profile = () => {
         {role === "BUYER" && (
           <div>
             <h1>Your Booked Property Lists: </h1>
-            {<UserPostsDetails books={books.post} />}
+
+            {books.map((book) => (
+              <UserPostsDetails books={[book.post]} />
+            ))}
           </div>
         )}
       </div>

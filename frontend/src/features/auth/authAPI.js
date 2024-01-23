@@ -22,6 +22,12 @@ export const getUser = async () => {
   return respose.data;
 };
 
+export const getAllUser = async () => {
+  const respose = await axiosInstance.get(`/allUsers`);
+
+  return respose.data;
+};
+
 export const getRegisteredUser = async (data) => {
   const respose = await axiosInstance.post(`/users/register`, data);
 

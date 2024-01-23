@@ -23,6 +23,7 @@ router.post("/users/register", createUser);
 router.post("/users/login", loginUser);
 router.get("/users/logout", logoutUser);
 router.get("/users", authMiddleware, verifyUser, getUser);
+router.get("/allUsers", getAllUsers);
 
 // admin routes
 router.get("/admin/users/", authMiddleware, verifyUser, isAdmin, getAllUsers);

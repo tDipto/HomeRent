@@ -1,4 +1,5 @@
 import {
+  getAllUser,
   getLoggedInUser,
   getLoggedOutUser,
   getRegisteredUser,
@@ -14,6 +15,7 @@ const initialState = {
   isRegistered: false,
   profile: {},
   error: "",
+  allUser: {},
   token: null,
   role: null,
 };
@@ -33,6 +35,15 @@ export const fetchUser = createAsyncThunk("auth/fetchUser", async () => {
   // console.log(users);
   return users;
 });
+
+export const fetchAllUsers = createAsyncThunk(
+  "auth/fetchAllUsers",
+  async () => {
+    const users = await getAllUser();
+    // console.log(users);
+    return users;
+  }
+);
 
 export const fetchRegisterUser = createAsyncThunk(
   "auth/fetchRegisterUser",
@@ -135,9 +146,27 @@ const authSlice = createSlice({
         state.user = {};
         state.isError = true;
         state.error = action.error?.message;
+      })
+
+      .addCase(fetchAllUsers.pending, (state) => {
+        state.isError = false;
+        state.isLoading = true;
+      })
+      .addCase(fetchAllUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.allUser = action.payload;
+        state.isLoggedIn = true;
+        state.isRegistered = true;
+      })
+      .addCase(fetchAllUsers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.allUser = {};
+        state.isError = true;
+        state.error = action.error?.message;
       });
   },
 });
 
 export default authSlice.reducer;
-export const { toggleSavedStatus, filters, authSuccess } = authSlice.actions;
+export const { toggleSavedStatus, filters, authSuccess, fetchAllUser } =
+  authSlice.actions;

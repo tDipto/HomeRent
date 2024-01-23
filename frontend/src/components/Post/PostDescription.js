@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { fetchUser } from "../../features/auth/authSlice";
 import { related } from "../../features/posts/postsSlice";
 import { api } from "../../utils/api";
 import axiosInstance from "../../utils/axios";
@@ -19,8 +20,17 @@ async function fetchPosts(postId) {
 
 const PostDescription = () => {
   const dispatch = useDispatch();
-  const { isLoading, isError, error, isLoggedIn, user, posts, isRegistered } =
-    useSelector((state) => state.auth);
+  const {
+    isLoading,
+    isError,
+    error,
+    isLoggedIn,
+    user,
+    posts,
+    isRegistered,
+    fetchAllUser,
+    allUser,
+  } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
 
@@ -44,10 +54,21 @@ const PostDescription = () => {
       setPost(data);
     });
     dispatch(related(postId));
+    dispatch(fetchUser());
+    // dispatch(fetchAllUsers());
   }, [postId, dispatch]);
+
+  const bookeditems = post.book;
+
+  let bookedId = bookeditems?.map((item) => item.userId);
+  // let userId = allUser?.map((item) => console.log(item));
+  console.log(allUser);
+  console.log(post.userId);
+  console.log(user.id);
 
   return (
     <>
+      {/* {console.log(bookedId)} */}
       <div className="mx-auto  flex flex-row bg-slate-400 pt-20">
         <div className="w-[50%] bg-white p-8">
           {post.photos && post.photos.length > 0 && (
@@ -123,16 +144,17 @@ const PostDescription = () => {
                 </button>
               )}
 
-              {(role === "ADMIN" || role === "SELLER") && (
-                <button
-                  className="py-3 bg-red-800 w-full rounded-md hover:bg-red-600 cursor-pointer"
-                  type="button"
-                >
-                  <Link to={`/posts/${postId}/delete`} className="text-white">
-                    Delete
-                  </Link>
-                </button>
-              )}
+              {(role === "ADMIN" || role === "SELLER") &&
+                post.userId === user.id && (
+                  <button
+                    className="py-3 bg-red-800 w-full rounded-md hover:bg-red-600 cursor-pointer"
+                    type="button"
+                  >
+                    <Link to={`/posts/${postId}/delete`} className="text-white">
+                      Delete
+                    </Link>
+                  </button>
+                )}
             </div>
             {<p className="font-bold text-red-600">{message}</p>}
           </div>

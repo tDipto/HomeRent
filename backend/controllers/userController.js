@@ -84,7 +84,11 @@ const logoutUser = async (req, res) => {
 
 // get all users
 const getAllUsers = async (req, res) => {
-  const users = await prisma.user.findMany();
+  const users = await prisma.user.findMany({
+    where: {
+      role: "BUYER",
+    },
+  });
   res.status(200).json(users);
 };
 

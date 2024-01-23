@@ -34,7 +34,7 @@ const Profile = () => {
   const phone = user?.profile?.phone;
   const createdAt = user?.profile?.createdAt;
 
-  // console.log(books);
+  console.log(posts);
 
   return (
     <div className="flex flex-row  w-[100%]  bg-slate-400 pt-1 mt-10">
@@ -93,13 +93,13 @@ const Profile = () => {
             <h1 className="text-center text-black bg-blue-500 p-5">
               Your Posted Property Lists:{" "}
             </h1>
-            {<UserPostsDetails posts={posts} />}
+            {<UserPostsDetails books={posts} />}
           </div>
         )}
         {role === "BUYER" && (
           <div>
             <h1>Your Booked Property Lists: </h1>
-            {<UserPostsDetails books={books} />}
+            {<UserPostsDetails books={books.post} />}
           </div>
         )}
       </div>

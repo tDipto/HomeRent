@@ -91,16 +91,23 @@ const Profile = () => {
             <h1 className="text-center text-black bg-blue-500 p-5">
               Your Posted Property Lists:{" "}
             </h1>
-            {<UserPostsDetails books={posts} />}
+
+            {posts.length !== 0 ? (
+              <UserPostsDetails books={posts} />
+            ) : (
+              <p>You haven't Post yet</p>
+            )}
           </div>
         )}
         {role === "BUYER" && (
           <div>
             <h1>Your Booked Property Lists: </h1>
 
-            {books.map((book) => (
-              <UserPostsDetails books={[book.post]} />
-            ))}
+            {books.length !== 0 ? (
+              books.map((book) => <UserPostsDetails books={[book.post]} />)
+            ) : (
+              <p>You Book No property</p>
+            )}
           </div>
         )}
       </div>

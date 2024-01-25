@@ -50,10 +50,10 @@ const Registration = () => {
 
   return (
     <div
-      className="flex flex-col justify-center items-center  opacity-100"
+      className="flex flex-col justify-center items-center  opacity-100 mt-20"
       style={{}}
     >
-      <div className="flex m-12 p-12 flex-row w-[70%] justify-center relative opacity-100  items-center h-[50%] bg-slate-50 border ">
+      <div className="flex m-12 p-12 flex-row w-[70%] justify-center  opacity-100  items-center h-[50%] bg-slate-50 border ">
         <div className="flex flex-col  justify-center items-center   w-[80vh] h-[90%]">
           <img
             src={registerImage}

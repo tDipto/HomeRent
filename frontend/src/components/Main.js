@@ -1,12 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Caraosel from "./Carousel/carasol";
+ 
 import blueBackgroundImage from "../assets/bg-img.jpg";
-// import Slider from 'react-slick';
 import { useDispatch } from "react-redux";
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
-import carasol_1 from "./Images/carasol_1.jpg";
-import carasol_2 from "./Images/carasol_2.jpg";
+
 
 const Main = () => {
   const navigate = useNavigate();
@@ -16,9 +14,11 @@ const Main = () => {
     navigate("/home");
   };
 
-  // useEffect(() => {
-  //   dispatch(fetchUser());
-  // }, []);
+  let slides=[
+    "http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcTwGTmgN4WclFT5_MqG2LWj9nSsaabJ_hdFIxxBFf_SPblOvYwmOQdGu6cSOEmULMLm595LQ_FahMEgDtjqqDU",
+    "http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcSQ69jQfXUnTCgxvqI3vPFQXbhFvjEsrCpaJg93TaPToPajR-WLog6wKi1_duCqj-1YSNmMR8TJVFNy4yniXcE",
+    "http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRkXBpCv0_aA9rtR69FyYsewBE9MJXUSVwfCh0y-gvEUd6xPRdILqtUAiqaw1QoiK5q98rAAmEBmQLWGrlUmtE"
+  ]
 
   const settings = {
     dots: true,
@@ -27,30 +27,32 @@ const Main = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  const imageSources = [
-    "./Images/carasol_1.jpg",
-    "./Images/carasol_2.jpg",
-    "./Images/carasol_3.jpg",
-    // Add more image paths as needed
-  ];
   return (
-    <div
-      className="flex items-center justify-center h-screen bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${blueBackgroundImage})`,
-        // Add blur effect
-      }}
-    >
+<div className="bg-[#F9F3F2]">
+  <div className="relative flex justify-end"> {/* Use flex container for alignment */}
+    <div className="w-[60%] pt-11 text-right"> {/* Align text to the right */}
+      <Caraosel slides={slides} />
+    </div>
+
+    <div className="absolute bottom-4 left-8 w-[30%] text-left"> {/* Further adjust left margin */}
+      <div className="mb-2 text-lg text-gray-600 font-semibold text-center"> {/* Center the text */}
+        <h2 className="text-xl font-bold">Rent Your Dream Home</h2>
+        <p>Discover a collection of beautiful homes for rent. Find the perfect place to call home for your next adventure.</p>
+      </div>
+
       <button
         onClick={goHome}
-        className="px-6 py-3 text-white bg-custom1 rounded-lg text-xl font-semibold shadow-md hover:bg-custom2 transition duration-300"
+        className="px-6 py-2 text-white bg-custom1 rounded-lg text-xl font-semibold shadow-md hover:bg-custom2 transition duration-300"
       >
         Go Explore Home
       </button>
-      <div>
-        <img src={carasol_1}/>
-      </div>
-      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+      
   );
 };
 

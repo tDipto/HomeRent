@@ -157,7 +157,7 @@ const PostDescription = () => {
                 post.userId === user.id && (
                   <div>
                     <button
-                      className="py-3 bg-red-800 w-full rounded-md hover:bg-red-600 cursor-pointer"
+                      className="py-3 bg-blue-800 w-full rounded-md hover:bg-blue-600 cursor-pointer mb-2"
                       type="button"
                     >
                       <Link to={`/posts/${postId}/edit`} className="text-white">

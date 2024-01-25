@@ -39,7 +39,10 @@ const Main = () => {
       >
         Go Explore Home
       </button>
-    </div>
+      <div>
+        <img src={carasol_1}/>
+      </div>
+      </div>
   );
 };
 

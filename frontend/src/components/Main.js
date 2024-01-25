@@ -28,13 +28,18 @@ const Main = () => {
     slidesToScroll: 1,
   };
   return (
-<div>
+<div className="bg-[#F9F3F2]">
   <div className="relative flex justify-end"> {/* Use flex container for alignment */}
     <div className="w-[60%] pt-11 text-right"> {/* Align text to the right */}
       <Caraosel slides={slides} />
     </div>
 
-    <div className="absolute bottom-4 left-0 w-[30%] text-left"> {/* Keep the button left-aligned */}
+    <div className="absolute bottom-4 left-8 w-[30%] text-left"> {/* Further adjust left margin */}
+      <div className="mb-2 text-lg text-gray-600 font-semibold text-center"> {/* Center the text */}
+        <h2 className="text-xl font-bold">Rent Your Dream Home</h2>
+        <p>Discover a collection of beautiful homes for rent. Find the perfect place to call home for your next adventure.</p>
+      </div>
+
       <button
         onClick={goHome}
         className="px-6 py-2 text-white bg-custom1 rounded-lg text-xl font-semibold shadow-md hover:bg-custom2 transition duration-300"
@@ -44,6 +49,7 @@ const Main = () => {
     </div>
   </div>
 </div>
+
 
   
       

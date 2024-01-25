@@ -7,6 +7,7 @@ import { api } from "../../utils/api";
 import axiosInstance from "../../utils/axios";
 
 import ShowBookedProfile from "../Profile/ShowBookedProfile";
+import GoogleMap from "./GoogleMap";
 import RelatedPosts from "./RelatedPosts";
 
 async function fetchPosts(postId) {
@@ -39,6 +40,14 @@ const PostDescription = () => {
   const [post, setPost] = useState({});
   const [message, setMessage] = useState("");
   const { postId } = useParams();
+
+  let map = null;
+  let latitude, longitude;
+  const coordinate = post?.coordinates;
+  if (coordinate) {
+    [latitude, longitude] = coordinate.split(",");
+    map = <GoogleMap latitude={latitude} longitude={longitude} />;
+  }
 
   const role = user?.role;
 
@@ -148,18 +157,41 @@ const PostDescription = () => {
 
               {(role === "ADMIN" || role === "SELLER") &&
                 post.userId === user.id && (
-                  <button
-                    className="py-3 bg-red-800 w-full rounded-md hover:bg-red-600 cursor-pointer"
-                    type="button"
-                  >
-                    <Link to={`/posts/${postId}/delete`} className="text-white">
-                      Delete
-                    </Link>
-                  </button>
+                  <div>
+                    <button
+                      className="py-3 bg-red-800 w-full rounded-md hover:bg-red-600 cursor-pointer"
+                      type="button"
+                    >
+                      <Link
+                        to={`/posts/${postId}/delete`}
+                        className="text-white"
+                      >
+                        Edit
+                      </Link>
+                    </button>
+
+                    <button
+                      className="py-3 bg-red-800 w-full rounded-md hover:bg-red-600 cursor-pointer"
+                      type="button"
+                    >
+                      <Link
+                        to={`/posts/${postId}/delete`}
+                        className="text-white"
+                      >
+                        Delete
+                      </Link>
+                    </button>
+                  </div>
                 )}
             </div>
             {<p className="font-bold text-red-600">{message}</p>}
           </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div className="bg-success text-center mb-4">Show map</div>
+          {map}
         </div>
       </div>
       {post.userId === user.id && (
@@ -169,8 +201,8 @@ const PostDescription = () => {
           </h3>
           <div className="text-center">
             {usersInBookedId.length !== 0 ? (
-              usersInBookedId.map((profile) => (
-                <ShowBookedProfile profiles={profile} />
+              usersInBookedId.map((profile, index) => (
+                <ShowBookedProfile profiles={profile} count={index + 1} />
               ))
             ) : (
               <p>No booked Student</p>

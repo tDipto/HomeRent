@@ -153,6 +153,7 @@ const updatePost = async (req, res) => {
         id: postId,
       },
       data: {
+        ...req.body,
         available: newAvailable,
         seatCapacity: newSeatCapacity,
       },
@@ -162,6 +163,34 @@ const updatePost = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// const updatePostProfile = async (req, res) => {
+//   const { address, phone } = req.body;
+
+//   try {
+//     const { postId } = req.params;
+
+//     const { seatCapacity } = req.body;
+
+//     const oldPost = await prisma.post.findUnique({
+//       where: {
+//         id: postId,
+//       },
+//       data: {},
+//     });
+//     const post = await prisma.post.update({
+//       where: {
+//         userId: req.user.id,
+//       },
+//       data: {
+//         ...req.body,
+//       },
+//     });
+//     res.status(200).json(post);
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// };
 
 // delete post
 const deletePost = async (req, res) => {

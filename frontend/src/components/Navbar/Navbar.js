@@ -28,7 +28,7 @@ const Navbar = () => {
   };
   const name = user?.name;
   return (
-    <div className="navbar bg-custom text-black fixed top-0 w-full">
+    <div className="navbar bg-custom text-black fixed top-0 w-full z-20">
       <div className="flex-1">
         <Link to="/" className="flex flex-row">
           <div>

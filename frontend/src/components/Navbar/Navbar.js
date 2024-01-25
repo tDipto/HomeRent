@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-custom text-black fixed top-0 w-full z-20">
+    <div className="navbar bg-custom text-black fixed top-0 w-full z-20 px-20">
       <div className="flex-1">
         <Link to="/" className="flex flex-row">
           <div>
@@ -104,7 +104,7 @@ const Navbar = () => {
                     <img alt={name[0]} src={image} />{" "}
                   </div>
                 ) : (
-                  <div class="avatar  placeholder w-14">
+                  <div class="avatar  placeholder w-16">
                     {/* {console.log(name)} */}
                     <div class="bg-neutral text-neutral-content rounded-full">
                       <span class="text-xl">

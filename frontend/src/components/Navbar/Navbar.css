@@ -30,7 +30,7 @@
 }
 
 .button-72:hover {
-  background-image: linear-gradient(rgb(198, 214, 205), #1f5b2c 50%);
+  background-image: linear-gradient(rgb(50, 62, 74), #263128 50%);
 }
 
 @media (min-width: 768px) {

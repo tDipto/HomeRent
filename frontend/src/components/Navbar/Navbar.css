@@ -2,7 +2,7 @@
 .button-72 {
   align-items: center;
   background-color: initial;
-  background-image: linear-gradient(#374352, rgba(29, 33, 41, 0.84) 50%);
+  background-image: linear-gradient(#a8a29e, rgba(128, 118, 105, 0.752) 50%);
   border-radius: 42px;
   border-width: 0;
   box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px,
@@ -12,7 +12,7 @@
   display: flex;
   font-family: Quicksand, sans-serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 2;
   justify-content: center;
   letter-spacing: 0.04em;
   line-height: 16px;
@@ -21,7 +21,7 @@
   text-align: center;
   text-decoration: none;
   text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px,
-    rgba(255, 255, 255, 0.2) 0 0 12px, rgba(57, 31, 91, 0.6) 1px 1px 4px,
+    rgba(255, 255, 255, 0.2) 0 0 12px, rgba(54, 22, 97, 0.6) 1px 1px 4px,
     rgba(57, 31, 91, 0.32) 4px 4px 16px;
   user-select: none;
   -webkit-user-select: none;
@@ -30,7 +30,7 @@
 }
 
 .button-72:hover {
-  background-image: linear-gradient(rgb(50, 62, 74), #263128 50%);
+  background-image: linear-gradient(rgb(158, 157, 146), #564425 50%);
 }
 
 @media (min-width: 768px) {

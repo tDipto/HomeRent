@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-custom text-black fixed top-0 w-full z-20 px-20 sm:px-2">
+    <div className="navbar bg-custom text-black fixed top-0 w-full z-20 md:px-20 sm:px-2">
       <div className="flex-1">
         <Link to="/" className="flex flex-row">
           <div>
@@ -63,22 +63,33 @@ const Navbar = () => {
             className="input input-bordered w-100 md:w-auto bg-slate-50"
           />
         </form>
+        <div className="button-72">
+          <Link to="/home">
+            {/* <button className="" type="button"> */}
+            Home
+            {/* </button> */}
+          </Link>
+        </div>
         <div>
+          {/* {console.log(isLoggedIn, role)} */}
           {isLoggedIn && role === "SELLER" && (
-            <Link to="/posts/create" className="btn btn-ghost bg-custom1">
-              Add Post
-            </Link>
+            <div className="button-72">
+              <Link to="/posts/create" className="">
+                Add Post
+              </Link>
+            </div>
           )}
           {!isLoggedIn && (
-            <>
-              <Link to="/login" className="btn btn-ghost bg-blue-400">
-                Login
-              </Link>
-              <Link to="/register" className="btn mx-3 btn-ghost bg-blue-400">
-                Register
-              </Link>
-            </>
+            <div className="flex-auto flex gap-2">
+              <div className="button-72">
+                <Link to="/login">Login</Link>
+              </div>
+              <div className="button-72">
+                <Link to="/register">Register</Link>
+              </div>
+            </div>
           )}
+
           {/* {!isLoggedIn && (
             
           )} */}

@@ -20,7 +20,9 @@ const Posts = () => {
               key={post.id}
               style={{ background: "white" }}
             >
-              <PostItem post={post} />
+              <>
+                <PostItem post={post} />
+              </>
             </Link>
           ))}
         </div>

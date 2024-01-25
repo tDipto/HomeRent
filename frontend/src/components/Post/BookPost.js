@@ -56,36 +56,49 @@ const BookPost = () => {
   };
 
   return (
-    <div className="flex flex-cols-2 gap-1 justify-center items-center min-w-full min-h-screen ">
-      <div className="w-[90vh] mx-auto my-5 p-4 bg-gray-100 rounded-lg">
-        <h1 className="text-2xl font-bold mb-4">{post.title}</h1>
-        <p className="text-xl mb-4">{post.description}</p>
-        <p className="text-xl mb-4">{post.price}</p>
-        <p className="text-xl mb-4">{post.seatCapacity}</p>
-      </div>
-      <form
-        onSubmit={handleSubmit}
-        className=" w-[90vh]  mx-auto my-5 p-4 bg-gray-100 rounded-lg"
-      >
-        <label>
-          Number of Seat:
-          <input
-            type="number"
-            name="seatCapacity"
-            value={formData.seatCapacity}
-            onChange={handleInputChange}
-            className="w-full border rounded-md p-2 mb-4"
-          />
-        </label>
+    <>
+      <div className="mt-40 mb-40 pt-6 px-12">
+        {/* Ensure visibility by removing unnecessary container: */}
+        <h1 className="text-2xl  mb-4">
+          Book Your Seat in{" "}
+          <span className="text-2xl font-bold mb-4 text-custom2">
+            {post.title}
+          </span>
+        </h1>
 
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Book Now
-        </button>
-      </form>
-    </div>
+        <div className="flex flex-cols-2 gap-1 justify-center items-center min-w-full ">
+          <div className="w-[90vh] mx-auto my-5 p-4 bg-gray-100 rounded-lg">
+            <h1 className="text-2xl font-bold mb-4">{post.location}</h1>
+            <p className="text-xl mb-4">Contact {post.contact}</p>
+            <p className="text-xl mb-4">Price :{post.price}</p>
+            <p className="text-xl mb-4">Seat Remaining: {post.seatCapacity}</p>
+          </div>
+
+          <form
+            onSubmit={handleSubmit}
+            className="w-[90vh] ml-5 my-5 p-4 bg-gray-100 rounded-lg"
+          >
+            <label>
+              Number of Seat:
+              <input
+                type="number"
+                name="seatCapacity"
+                value={formData.seatCapacity}
+                onChange={handleInputChange}
+                className="w-full border rounded-md p-2 mb-4"
+              />
+            </label>
+
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Book Now
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
   );
 };
 

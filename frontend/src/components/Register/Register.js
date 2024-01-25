@@ -90,7 +90,19 @@ const Registration = () => {
               >
                 Role
               </label>
-              <input
+              <select
+                id="role"
+                value={formData.role}
+                onChange={handleChange}
+                className="w-full border rounded-md p-2 mb-4 text-black"
+              >
+                <option value="" disabled>
+                  Select Type
+                </option>
+                <option value="BUYER">Buyer</option>
+                <option value="SELLER">Seller</option>
+              </select>
+              {/* <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                 id="role"
                 type="text"
@@ -98,7 +110,7 @@ const Registration = () => {
                 placeholder="BUYER or SELLER"
                 value={formData.role.toUpperCase()}
                 onChange={handleChange}
-              />
+              /> */}
             </div>
             <div className="mb-4">
               <label

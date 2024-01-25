@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import blueBackgroundImage from "../assets/bg-img.jpg";
 // import Slider from 'react-slick';
+import { useDispatch } from "react-redux";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import carasol_1 from "./Images/carasol_1.jpg";
@@ -9,9 +10,16 @@ import carasol_2 from "./Images/carasol_2.jpg";
 
 const Main = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const goHome = () => {
     navigate("/home");
   };
+
+  // useEffect(() => {
+  //   dispatch(fetchUser());
+  // }, []);
+
   const settings = {
     dots: true,
     infinite: true,

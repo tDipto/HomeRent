@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { fetchLoggedOutUser } from "../../features/auth/authSlice";
+import { fetchLoggedOutUser, fetchUser } from "../../features/auth/authSlice";
 import { fetchUserProfile } from "../../features/profile/profileSlice";
 import logo from "../Navbar/logo.png";
-
+import "./Navbar.css";
 // console.log(logo);
 
 const Navbar = () => {
@@ -17,6 +17,13 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, []);
+
+  const name = user?.name;
+  // console.log(user);
+
   const handleLogout = async () => {
     dispatch(fetchLoggedOutUser());
     localStorage.clear();
@@ -26,7 +33,7 @@ const Navbar = () => {
     dispatch(fetchUserProfile());
     navigate("/profile");
   };
-  const name = user?.name;
+
   return (
     <div className="navbar bg-custom text-black fixed top-0 w-full z-20">
       <div className="flex-1">
@@ -76,27 +83,40 @@ const Navbar = () => {
             
           )} */}
         </div>
+
         {isLoggedIn && (
           <>
-            <button onClick={handleProfile} type="button">
-              {name}
-            </button>
+            <div className="button-72">
+              <button className="" onClick={handleProfile} type="button">
+                {name}
+              </button>
+            </div>
+
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar"
+                className="btn btn-ghost btn-circle avatar online"
               >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src={
-                      profile !== null
-                        ? image
-                        : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                    }
-                  />
-                </div>
+                {/* {console.log(profile)} */}
+                {profile.image === 0 ? (
+                  <div className="w-10 rounded-full">
+                    <img alt={name[0]} src={image} />{" "}
+                  </div>
+                ) : (
+                  <div class="avatar  placeholder w-14">
+                    {/* {console.log(name)} */}
+                    <div class="bg-neutral text-neutral-content rounded-full">
+                      <span class="text-xl">
+                        {name && name[0] !== null ? name[0].toUpperCase() : "X"}
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                {/* <div className="w-10 rounded-full">
+                  <img alt={name[0]} src={profile !== null ? image : null} />
+                </div> */}
               </div>
 
               <ul

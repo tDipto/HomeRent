@@ -111,25 +111,83 @@ const AddPost = () => {
   };
 
   return (
-    <div className=" pt-28">
+    <div className=" pt-28 bg-gray-200">
+      <h1 class="ml-3 mb-4 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Housing Information</h1>
       <form
         onSubmit={handleSubmit}
-        className="w-[90vh] mx-auto my-5 p-4 bg-gray-100 rounded-lg"
+        className="w-[90vh] mx-auto my-5 p-4 bg-gray-50 rounded-lg"
       >
+  
+
+  <div class="grid grid-cols-2 gap-4">
+      <div class="relative mb-0" data-te-input-wrapper-init>
         <label htmlFor="title" className="block text-lg font-semibold mb-2">
-          Home Name:
+            Home Name:
+          </label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={formData.title}
+            onChange={handleInputChange}
+            placeholder="Title"
+            className="w-full border rounded-md p-2 mb-4 text-black"
+          />
+      </div>
+
+      <div class="relative mb-0" data-te-input-wrapper-init>
+      <label htmlFor="price" className="block text-lg font-semibold mb-2">
+          House Rent:
         </label>
         <input
-          type="text"
-          id="title"
-          name="title"
-          value={formData.title}
+          type="number"
+          id="price"
+          name="price"
+          value={formData.price}
           onChange={handleInputChange}
-          placeholder="Title"
+          placeholder="Price"
           className="w-full border rounded-md p-2 mb-4 text-black"
         />
 
-        <label
+      </div>
+    </div>
+
+
+    <div class="grid grid-cols-2 gap-4">
+      <div class="relative mb-0" data-te-input-wrapper-init>
+        
+      <label htmlFor="contact" className="block text-lg font-semibold mb-2">
+          Contact:
+        </label>
+        <input
+          type="text"
+          id="contact"
+          name="contact"
+          value={formData.contact}
+          onChange={handleInputChange}
+          placeholder="Contact"
+          className="w-full border rounded-md p-2 mb-4 text-black"
+        />
+      </div>
+      <div class="relative mb-0" data-te-input-wrapper-init>
+      <label htmlFor="location" className="block text-lg font-semibold mb-2">
+          Location:
+        </label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          value={formData.location.toLowerCase().trim()}
+          onChange={handleInputChange}
+          placeholder="Location"
+          className="w-full border rounded-md p-2 mb-4 text-black"
+        />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div class="relative mb-0" data-te-input-wrapper-init>
+      <label
           htmlFor="seatCapacity"
           className="block text-lg font-semibold mb-2"
         >
@@ -144,45 +202,53 @@ const AddPost = () => {
           placeholder="Seat Capacity"
           className="w-full border rounded-md p-2 mb-4 text-black"
         />
+      </div>
 
-        <label htmlFor="price" className="block text-lg font-semibold mb-2">
-          Price:
-        </label>
-        <input
-          type="number"
-          id="price"
-          name="price"
-          value={formData.price}
-          onChange={handleInputChange}
-          placeholder="Price"
-          className="w-full border rounded-md p-2 mb-4 text-black"
-        />
+      <div class="relative mb-0" data-te-input-wrapper-init>
+      
+      {/* <label htmlFor="type" className="block text-lg font-semibold mb-2">
+            Type:
+          </label>
+          <input
+            type="text"
+            id="type"
+            name="type"
+            value={formData.type}
+            onChange={handleInputChange}
+            placeholder="Type"
+            className="w-full border rounded-md p-2 mb-4 text-black"
+          /> */}
+      <label htmlFor="type" className="block text-lg font-semibold mb-4">
+            Type:
+      </label>
+      <select
+        id="type"
+        name="type"
+        value={formData.type}
+        onChange={handleInputChange}
+        className="w-full border rounded-md p-2 mb-4 text-black"
+      >
+        <option value="" disabled>Select Type</option>
+        <option value="Single Room">Single Room</option>
+        <option value="Apartment">Apartment</option>
+      </select>
 
-        <label htmlFor="type" className="block text-lg font-semibold mb-2">
-          Type:
-        </label>
-        <input
-          type="text"
-          id="type"
-          name="type"
-          value={formData.type}
-          onChange={handleInputChange}
-          placeholder="Type"
-          className="w-full border rounded-md p-2 mb-4 text-black"
-        />
+      </div>
+    </div>
 
-        <label htmlFor="contact" className="block text-lg font-semibold mb-2">
-          Contact:
-        </label>
-        <input
-          type="text"
-          id="contact"
-          name="contact"
-          value={formData.contact}
-          onChange={handleInputChange}
-          placeholder="Contact"
-          className="w-full border rounded-md p-2 mb-4 text-black"
-        />
+
+
+
+    
+    
+        
+    
+
+        
+
+        
+
+      
 
         <label htmlFor="details" className="block text-lg font-semibold mb-2">
           Details:
@@ -197,18 +263,6 @@ const AddPost = () => {
           rows="4"
         ></textarea>
 
-        <label htmlFor="location" className="block text-lg font-semibold mb-2">
-          Location:
-        </label>
-        <input
-          type="text"
-          id="location"
-          name="location"
-          value={formData.location.toLowerCase().trim()}
-          onChange={handleInputChange}
-          placeholder="Location"
-          className="w-full border rounded-md p-2 mb-4 text-black"
-        />
 
         <label
           htmlFor="coordinates"

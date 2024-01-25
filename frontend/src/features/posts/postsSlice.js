@@ -15,6 +15,7 @@ export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
   async (query) => {
     const posts = await getPosts(query);
+
     return posts;
   }
 );

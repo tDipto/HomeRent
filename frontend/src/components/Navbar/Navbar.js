@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-custom text-black fixed top-0 w-full z-20 px-20">
+    <div className="navbar bg-custom text-black fixed top-0 w-full z-20 px-20 sm:px-2">
       <div className="flex-1">
         <Link to="/" className="flex flex-row">
           <div>
@@ -104,10 +104,10 @@ const Navbar = () => {
                     <img alt={name[0]} src={image} />{" "}
                   </div>
                 ) : (
-                  <div class="avatar  placeholder w-16">
+                  <div className="avatar  placeholder w-16">
                     {/* {console.log(name)} */}
-                    <div class="bg-neutral text-neutral-content rounded-full">
-                      <span class="text-xl">
+                    <div className="bg-neutral text-neutral-content rounded-full">
+                      <span className="text-xl">
                         {name && name[0] !== null ? name[0].toUpperCase() : "X"}
                       </span>
                     </div>

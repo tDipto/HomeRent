@@ -6,6 +6,7 @@ const {
   deletePost,
   getPost,
   getAllPostsBySearch,
+  updatePostProfile,
 } = require("../controllers/postController");
 const upload = require("../services/fileUpload");
 const {
@@ -31,11 +32,12 @@ router.post(
 router.get("/posts/:postId", getPost);
 router.put(
   "/posts/:postId",
-  authMiddleware,
-  verifyUser,
-  verifySeller,
-  updatePost
+  // authMiddleware,
+  // verifyUser,
+  // verifySeller,
+  updatePostProfile
 );
+
 router.delete(
   "/posts/:postId",
   authMiddleware,

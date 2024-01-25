@@ -7,8 +7,8 @@ const ShowBookedProfile = ({ profiles, count }) => {
     <div>
       <ul className="list-group">
         <li className="list-group-item bg-white text-black">
-          <div class="card">
-            <div class="card-body">
+          <div className="card">
+            <div className="card-body">
               {count}. || Name: {name} || Email: {email}
             </div>
           </div>

@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./map.css";
 
 const GoogleMap = ({ latitude, longitude }) => {
-  console.log(latitude, longitude);
+  // console.log(latitude, longitude);
   const mapContainer = useRef(null);
   const map = useRef(null);
   const tokyo = { longitude: longitude, latitude: latitude };

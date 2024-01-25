@@ -107,14 +107,12 @@ const PostDescription = () => {
                 <p className="text-lg">
                   <strong>Seat Capacity:</strong> {post.seatCapacity}
                 </p>
-                <p className="text-lg">
-                  <strong>Price:</strong> {post.price}
-                </p>
+                <p className="text-lg"></p>
                 <p className="text-lg">
                   <strong>Type:</strong> {post.type}
                 </p>
                 <p className="text-lg">
-                  <strong>Available:</strong> {post.availabe ? "Yes" : "No"}
+                  <strong>Available:</strong> {post.available ? "Yes" : "No"}
                 </p>
               </div>
               <div>
@@ -131,7 +129,7 @@ const PostDescription = () => {
             </div>
 
             <div className="flex flex-col mt-4">
-              <button
+              {/* <button
                 className="py-3 mb-4 bg-blue-800 w-full rounded-md hover:bg-blue-600 cursor-pointer"
                 type="button"
               >
@@ -143,7 +141,7 @@ const PostDescription = () => {
                 >
                   See Location
                 </a>
-              </button>
+              </button> */}
 
               {(role === null || role === "BUYER" || !isRegistered) && (
                 <button
@@ -162,10 +160,7 @@ const PostDescription = () => {
                       className="py-3 bg-red-800 w-full rounded-md hover:bg-red-600 cursor-pointer"
                       type="button"
                     >
-                      <Link
-                        to={`/posts/${postId}/delete`}
-                        className="text-white"
-                      >
+                      <Link to={`/posts/${postId}/edit`} className="text-white">
                         Edit
                       </Link>
                     </button>

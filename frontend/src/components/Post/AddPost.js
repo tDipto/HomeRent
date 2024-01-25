@@ -112,15 +112,15 @@ const AddPost = () => {
 
   return (
     <div className=" pt-28 bg-gray-200">
-      <h1 class="ml-3 mb-4 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center">
+      <h1 className="ml-3 mb-4 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center">
         Housing Information
       </h1>
       <form
         onSubmit={handleSubmit}
         className="w-[90vh] mx-auto my-5 p-4 bg-gray-50 rounded-lg"
       >
-        <div class="grid grid-cols-2 gap-4">
-          <div class="relative mb-0" data-te-input-wrapper-init>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="relative mb-0" data-te-input-wrapper-init>
             <label htmlFor="title" className="block text-lg font-semibold mb-2">
               Home Name:
             </label>
@@ -135,7 +135,7 @@ const AddPost = () => {
             />
           </div>
 
-          <div class="relative mb-0" data-te-input-wrapper-init>
+          <div className="relative mb-0" data-te-input-wrapper-init>
             <label htmlFor="price" className="block text-lg font-semibold mb-2">
               House Rent:
             </label>
@@ -151,8 +151,8 @@ const AddPost = () => {
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
-          <div class="relative mb-0" data-te-input-wrapper-init>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="relative mb-0" data-te-input-wrapper-init>
             <label
               htmlFor="contact"
               className="block text-lg font-semibold mb-2"
@@ -169,7 +169,7 @@ const AddPost = () => {
               className="w-full border rounded-md p-2 mb-4 text-black"
             />
           </div>
-          <div class="relative mb-0" data-te-input-wrapper-init>
+          <div className="relative mb-0" data-te-input-wrapper-init>
             <label
               htmlFor="location"
               className="block text-lg font-semibold mb-2"
@@ -188,8 +188,8 @@ const AddPost = () => {
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
-          <div class="relative mb-0" data-te-input-wrapper-init>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="relative mb-0" data-te-input-wrapper-init>
             <label
               htmlFor="seatCapacity"
               className="block text-lg font-semibold mb-2"
@@ -207,7 +207,7 @@ const AddPost = () => {
             />
           </div>
 
-          <div class="relative mb-0" data-te-input-wrapper-init>
+          <div className="relative mb-0" data-te-input-wrapper-init>
             {/* <label htmlFor="type" className="block text-lg font-semibold mb-2">
             Type:
           </label>

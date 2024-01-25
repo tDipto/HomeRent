@@ -164,33 +164,31 @@ const updatePost = async (req, res) => {
   }
 };
 
-// const updatePostProfile = async (req, res) => {
-//   const { address, phone } = req.body;
+const updatePostProfile = async (req, res) => {
+  try {
+    const { postId } = req.params;
 
-//   try {
-//     const { postId } = req.params;
+    // const oldPost = await prisma.post.findUnique({
+    //   where: {
+    //     id: postId,
+    //   },
+    // });
+    // console.log(req.body);
 
-//     const { seatCapacity } = req.body;
-
-//     const oldPost = await prisma.post.findUnique({
-//       where: {
-//         id: postId,
-//       },
-//       data: {},
-//     });
-//     const post = await prisma.post.update({
-//       where: {
-//         userId: req.user.id,
-//       },
-//       data: {
-//         ...req.body,
-//       },
-//     });
-//     res.status(200).json(post);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// };
+    const post = await prisma.post.update({
+      where: {
+        id: postId,
+      },
+      data: {
+        ...req.body,
+      },
+    });
+    console.log(post);
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 // delete post
 const deletePost = async (req, res) => {
@@ -214,4 +212,5 @@ module.exports = {
   deletePost,
   getPost,
   getAllPostsBySearch,
+  updatePostProfile,
 };

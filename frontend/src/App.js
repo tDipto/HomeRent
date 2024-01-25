@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar/Navbar";
 import AddPost from "./components/Post/AddPost";
 import BookPost from "./components/Post/BookPost";
 import DeletePost from "./components/Post/DeletePost";
+import EditPost from "./components/Post/EditPost";
 import PostDescription from "./components/Post/PostDescription";
 import UpdateProfile from "./components/Profile/UpdateProfile";
 import Registration from "./components/Register/Register";
@@ -30,6 +31,7 @@ function App() {
         dispatch(fetchLoggedOutUser());
       } else {
         const expireTime = new Date(localStorage.getItem("expireTime"));
+        const date = new Date();
 
         if (expireTime <= new Date()) {
           dispatch(fetchLoggedOutUser());
@@ -52,6 +54,7 @@ function App() {
         <Route path="/posts/create" element={<AddPost />} />
         <Route path="/posts/:postId" element={<PostDescription />} />
         <Route path="/posts/:postId/delete" element={<DeletePost />} />
+        <Route path="/posts/:postId/edit" element={<EditPost />} />
         <Route path="/books/:postId" element={<BookPost />} />
         <Route path="/profile" element={<Profile />} />
         {/* <Route path="/profile/create" element={<CreateProfile />} /> */}

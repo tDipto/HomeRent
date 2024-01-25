@@ -1,11 +1,31 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import blueBackgroundImage from "../assets/bg-img.jpg";
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import carasol_1 from './Images/carasol_1.jpg';
+import carasol_2 from './Images/carasol_2.jpg';
+import carasol_3 from './Images/carasol_3.jpg';
+
 const Main = () => {
   const navigate = useNavigate();
   const goHome = () => {
     navigate("/home");
   };
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  const imageSources = [
+    './Images/carasol_1.jpg',
+    './Images/carasol_2.jpg',
+    './Images/carasol_3.jpg',
+    // Add more image paths as needed
+  ];
   return (
     <div
       className="flex items-center justify-center h-screen bg-cover bg-center"
@@ -20,7 +40,44 @@ const Main = () => {
       >
         Go Explore Home
       </button>
+
+      <Slider {...settings}>
+      {imageSources.map((source, index) => (
+        <div key={index}>
+          <img src={source} alt={`Image ${index + 1}`} className="w-full h-auto" />
+        </div>
+      ))}
+    </Slider>
+
+
+
+
     </div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
   );
 };
 

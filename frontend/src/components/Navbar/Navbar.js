@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchLoggedOutUser } from "../../features/auth/authSlice";
 import { fetchUserProfile } from "../../features/profile/profileSlice";
+import logo from '../Navbar/logo.png'
+
+// console.log(logo);
 
 const Navbar = () => {
   const { isLoggedIn, user, role } = useSelector((state) => state.auth);
@@ -25,11 +28,19 @@ const Navbar = () => {
 
   
   return (
-    <div className="navbar bg-custom text-black fixed top-0 w-full z-50">
+    <div className="navbar bg-custom text-black fixed top-0 w-full">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl bg-gray">
+          <Link to="/" className="flex flex-row">
+              <div>
+                <img src={logo} alt="Logo" style={{ width: '80px', height: '80px' }}/>
+              </div>
+              <div className="text-xl mt-6">
+                <span>RentSpot : <small>Home Near CUET</small></span>
+              </div>
+          </Link>  
+        {/* <Link to="/" className="btn btn-ghost text-xl bg-gray">
           RentSpot : <small>Home Near CUET</small>
-        </Link>
+        </Link> */}
       </div>
       <div className="flex-none gap-2">
         <form className="form-control">

@@ -1,12 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import blueBackgroundImage from "../assets/bg-img.jpg";
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import carasol_1 from './Images/carasol_1.jpg';
-import carasol_2 from './Images/carasol_2.jpg';
-import carasol_3 from './Images/carasol_3.jpg';
+// import Slider from 'react-slick';
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import carasol_1 from "./Images/carasol_1.jpg";
+import carasol_2 from "./Images/carasol_2.jpg";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -21,9 +20,9 @@ const Main = () => {
     slidesToScroll: 1,
   };
   const imageSources = [
-    './Images/carasol_1.jpg',
-    './Images/carasol_2.jpg',
-    './Images/carasol_3.jpg',
+    "./Images/carasol_1.jpg",
+    "./Images/carasol_2.jpg",
+    "./Images/carasol_3.jpg",
     // Add more image paths as needed
   ];
   return (
@@ -40,9 +39,7 @@ const Main = () => {
       >
         Go Explore Home
       </button>
-
     </div>
-
   );
 };
 

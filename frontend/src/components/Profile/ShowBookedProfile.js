@@ -1,6 +1,6 @@
 import React from "react";
 
-const ShowBookedProfile = ({ profiles }) => {
+const ShowBookedProfile = ({ profiles, count }) => {
   const { name, email } = profiles;
 
   return (
@@ -9,7 +9,7 @@ const ShowBookedProfile = ({ profiles }) => {
         <li className="list-group-item bg-white text-black">
           <div class="card">
             <div class="card-body">
-              No: {} Name: {name} Email: {email}
+              {count}. || Name: {name} || Email: {email}
             </div>
           </div>
         </li>

@@ -30,6 +30,7 @@ const Login = () => {
     dispatch(fetchPosts());
 
     setMessage(error);
+    console.log(error);
     if (error !== null) {
       navigate("/");
     }

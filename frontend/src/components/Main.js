@@ -2,17 +2,24 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Caraosel from "./Carousel/carasol";
  
+import blueBackgroundImage from "../assets/bg-img.jpg";
+import { useDispatch } from "react-redux";
+
 
 const Main = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const goHome = () => {
     navigate("/home");
   };
+
   let slides=[
     "http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcTwGTmgN4WclFT5_MqG2LWj9nSsaabJ_hdFIxxBFf_SPblOvYwmOQdGu6cSOEmULMLm595LQ_FahMEgDtjqqDU",
     "http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcSQ69jQfXUnTCgxvqI3vPFQXbhFvjEsrCpaJg93TaPToPajR-WLog6wKi1_duCqj-1YSNmMR8TJVFNy4yniXcE",
     "http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRkXBpCv0_aA9rtR69FyYsewBE9MJXUSVwfCh0y-gvEUd6xPRdILqtUAiqaw1QoiK5q98rAAmEBmQLWGrlUmtE"
   ]
+
   const settings = {
     dots: true,
     infinite: true,

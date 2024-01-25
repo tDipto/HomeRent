@@ -41,7 +41,7 @@ function App() {
       }
     };
     authCheck();
-  }, [isLoggedIn]);
+  }, []);
 
   let routes = null;
 

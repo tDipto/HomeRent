@@ -110,8 +110,8 @@ const Navbar = () => {
                 role="button"
                 className="btn btn-ghost btn-circle avatar online"
               >
-                {console.log(image)}
-                {image && image !== null ? (
+                {/* {console.log(profile)} */}
+                {profile.image === 0 ? (
                   <div className="w-10 rounded-full">
                     <img alt={name[0]} src={image} />{" "}
                   </div>

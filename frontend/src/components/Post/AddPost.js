@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import blueBackgroundImage from "../../assets/bg-img.jpg";
 import { api } from "../../utils/api";
 import axiosInstance from "../../utils/axios";
-
 const AddPost = () => {
   const { isLoading, isError, error, isLoggedIn, user, isRegistered } =
     useSelector((state) => state.auth);
@@ -111,8 +111,11 @@ const AddPost = () => {
   };
 
   return (
-    <div className=" pt-28 bg-gray-200">
-      <h1 className="ml-3 mb-4 text-3xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center">
+    <div
+      className=" pt-28 bg-gray-200"
+      style={{ backgroundImage: `url(${blueBackgroundImage})` }}
+    >
+      <h1 className="ml-3 mb-4 text-3xl font-bold leading-none tracking-tight text-white md:text-5xl lg:text-6xl dark:text-white text-center">
         Housing Information
       </h1>
       <form

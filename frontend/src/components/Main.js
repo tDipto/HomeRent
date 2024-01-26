@@ -26,7 +26,7 @@ const Main = () => {
     slidesToScroll: 1,
   };
   return (
-    <div className="bg-[#F9F3F2]">
+    <div className="bg-[#F9F3F2] ">
       <div className="relative flex justify-end ">
         {" "}
         {/* Use flex container for alignment */}
@@ -35,10 +35,10 @@ const Main = () => {
           {/* Align text to the right */}
           <Caraosel slides={slides} />
         </div>
-        <div className="absolute bottom-4 left-8 w-[30%] text-left pb-52 mb-20 pl-20">
+        <div className="absolute bottom-4 left-8 w-[30%] text-left ">
           {" "}
           {/* Further adjust left margin */}
-          <div className="md:pb-3 sm:pb-0 text-lg text-gray-600 font-semibold text-center ">
+          <div className=" text-lg text-gray-600 font-semibold text-center ">
             {" "}
             {/* Center the text */}
             <h2 className="text-xl font-bold">Rent Your Dream Home</h2>
@@ -49,7 +49,7 @@ const Main = () => {
           </div>
           <button
             onClick={goHome}
-            className="md:px-6 sm:pt-20 md:py-2 sm:mt-20 text-white bg-custom1 rounded-lg text-xl font-semibold shadow-md hover:bg-custom2 transition duration-300 md:ml-20 "
+            className="text-white bg-custom1 rounded-lg text-xl font-semibold shadow-md hover:bg-custom2 transition duration-300  "
           >
             Go Explore Home
           </button>

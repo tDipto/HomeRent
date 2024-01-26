@@ -39,3 +39,8 @@
     padding: 18px 34px;
   }
 }
+
+.active-nav-link:hover {
+  background-color: #564425 /* your desired hover color */;
+  /* Add any other styles for the hover effect */
+}

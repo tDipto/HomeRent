@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import blueBackgroundImage from "../../assets/bg-img.jpg";
 import registerImage from "../../assets/images/signup.svg";
 import { createANewProfile } from "../../features/profile/profileSlice";
 import axiosInstance from "../../utils/axios";
@@ -51,7 +52,7 @@ const Registration = () => {
   return (
     <div
       className="flex flex-col justify-center items-center  opacity-100 mt-20"
-      style={{}}
+      style={{ backgroundImage: `url(${blueBackgroundImage})` }}
     >
       <div className="flex m-12 p-12 flex-row w-[70%] justify-center  opacity-100  items-center h-[50%] bg-slate-50 border ">
         <div className="flex flex-col  justify-center items-center   w-[80vh] h-[90%]">

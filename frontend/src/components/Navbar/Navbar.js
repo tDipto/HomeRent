@@ -6,6 +6,7 @@ import { fetchUserProfile } from "../../features/profile/profileSlice";
 import logo from "../Navbar/logo.png";
 import "./Navbar.css";
 // console.log(logo);
+const activeNavLinkClass = "active-nav-link";
 
 const Navbar = () => {
   const { isLoggedIn, user, role } = useSelector((state) => state.auth);
@@ -109,8 +110,8 @@ const Navbar = () => {
                 role="button"
                 className="btn btn-ghost btn-circle avatar online"
               >
-                {/* {console.log(profile)} */}
-                {profile.image === 0 ? (
+                {console.log(image)}
+                {image && image !== null ? (
                   <div className="w-10 rounded-full">
                     <img alt={name[0]} src={image} />{" "}
                   </div>

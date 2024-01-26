@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import loginImage from "../../assets/images/login.svg";
 import { fetchLoggedInUser } from "../../features/auth/authSlice";
 import { fetchPosts } from "../../features/posts/postsSlice";
+
+import blueBackgroundImage from "../../assets/bg-img.jpg";
 const Login = () => {
   const { isLoading, isError, error, isLoggedIn, isRegistered } = useSelector(
     (state) => state.auth
@@ -50,8 +52,8 @@ const Login = () => {
   }
   return (
     <div
-      className="flex flex-col justify-center items-center  opacity-100 mt-20"
-      style={{}}
+      className="flex flex-col justify-center items-center  opacity-100 mt-20 "
+      style={{ backgroundImage: `url(${blueBackgroundImage})` }}
     >
       <div className="flex m-12 p-12 flex-row w-[70%] justify-center  opacity-100  items-center h-[50%] bg-slate-50 border ">
         <div className="flex flex-col  justify-center items-center  w-[80vh] h-[90%]">

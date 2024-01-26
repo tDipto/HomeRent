@@ -64,7 +64,7 @@ const Navbar = () => {
             className="input input-bordered w-100 md:w-auto bg-slate-50"
           />
         </form>
-        <div className="button-72">
+        <div className="button-75">
           <Link to="/home">
             {/* <button className="" type="button"> */}
             Home
@@ -74,7 +74,7 @@ const Navbar = () => {
         <div>
           {/* {console.log(isLoggedIn, role)} */}
           {isLoggedIn && role === "SELLER" && (
-            <div className="button-72">
+            <div className="button-75">
               <Link to="/posts/create" className="">
                 Add Post
               </Link>
@@ -82,10 +82,10 @@ const Navbar = () => {
           )}
           {!isLoggedIn && (
             <div className="flex-auto flex gap-2">
-              <div className="button-72">
+              <div className="button-75">
                 <Link to="/login">Login</Link>
               </div>
-              <div className="button-72">
+              <div className="button-75">
                 <Link to="/register">Register</Link>
               </div>
             </div>
@@ -98,7 +98,7 @@ const Navbar = () => {
 
         {isLoggedIn && (
           <>
-            <div className="button-72">
+            <div className="button-75">
               <button className="" onClick={handleProfile} type="button">
                 {name}
               </button>

@@ -42,8 +42,8 @@ const Profile = () => {
 
   let profileCard = (
     <div class="max-w-4xl flex items-center h-auto flex-wrap mx-auto my-32 mx-20 ">
-      <div id="profile" class="w-full shadow-2xl bg-white opacity-75 mx-6 ">
-        <div class="p-4 text-center ">
+      <div id="profile" class="w-full shadow-2xl bg-white opacity-85 mx-6 ">
+        <div class="p-4 text-center">
           <div
             className="block  rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
             style={{
@@ -118,8 +118,10 @@ const Profile = () => {
       }}
     >
       {profileCard}
-
-      <div className="w-1/2 flex flex-row flex-wrap p-10 bg-white justify-left items-center">
+      <div className="mockup-window border bg-base-300">
+        <div className="flex justify-center px-4 py-16 bg-base-200">Hello!</div>
+      </div>
+      <div className="w-1/2 flex flex-row flex-wrap p-10 bg-white justify-left items-center ml-20 my-2 mt-20">
         {(role === "ADMIN" || role === "SELLER") && (
           <div>
             <h1 className="text-center text-black bg-blue-500 p-5">

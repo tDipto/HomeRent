@@ -29,7 +29,7 @@ const GoogleMap = ({ latitude, longitude }) => {
 
   return (
     <>
-      <div className="map-wrap rounded-lg border-current w-3/5 h-80 pl-40 mb-2">
+      <div className="map-wrap rounded-lg border-current">
         <div ref={mapContainer} className="map" />
       </div>
     </>

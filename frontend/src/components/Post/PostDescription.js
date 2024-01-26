@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import blueBackgroundImage from "../../assets/bg-img.jpg";
 import { fetchAllUsers, fetchUser } from "../../features/auth/authSlice";
 import { related } from "../../features/posts/postsSlice";
 import { api } from "../../utils/api";
 import axiosInstance from "../../utils/axios";
-
 import ShowBookedProfile from "../Profile/ShowBookedProfile";
 import GoogleMap from "./GoogleMap";
 import RelatedPosts from "./RelatedPosts";
@@ -13,7 +13,7 @@ import RelatedPosts from "./RelatedPosts";
 async function fetchPosts(postId) {
   try {
     const response = await axiosInstance.get(`${api}/posts/${postId}`);
-    console.log(response);
+    // console.log(response);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -79,57 +79,89 @@ const PostDescription = () => {
       : [];
 
   return (
-    <div className="">
-      <div className="bg-black">hi</div>
-      <div className="px-20">
-        <div>ss</div>
-        {/* {console.log(bookedId)} */}
-        <div className="mx-auto  flex flex-row bg-slate-400 pt-20">
-          <div className="w-[50%] bg-white p-8">
+    <div
+      className="mt-24"
+      style={{
+        backgroundImage: `url(${blueBackgroundImage})`,
+      }}
+    >
+      {/* main */}
+      <div class="grid grid-col-2 mx-20 ">
+        {/* image  */}
+        <div class="bg-white pb-6 m-2 mockup-window border bg-base-300">
+          <div className="pl-6 pb-2 ">
+            <h3 className="chat-bubble  mb-4">Photos</h3>
+            {/* {post.photos && post.photos.length > 0 && (
+              <div className="flex flex-wrap">
+                {post.photos.map((photo, index) => (
+                  <div key={index} className="w-[40%]">
+                    <img
+                      src={photo}
+                      alt={`PhotoNo ${index + 1}`}
+                      className="rounded-md w-full"
+                    />
+                  </div>
+                ))}
+              </div>
+            )} */}
             {post.photos && post.photos.length > 0 && (
-              <div className="mt-4">
-                <h3 className="text-2xl font-semibold mb-4">Photos:</h3>
-                <div className="flex flex-wrap">
-                  {post.photos.map((photo, index) => (
-                    <div key={index} className="w-[45%] p-2">
-                      <img
-                        src={photo}
-                        alt={`PhotoNo ${index + 1}`}
-                        className="rounded-md w-full"
-                      />
+              <div className="carousel w-[55%]">
+                {post.photos.map((photo, index) => (
+                  <div
+                    key={index}
+                    className={`carousel-item relative w-full overflow-hidden ${
+                      index === 0 ? "active" : ""
+                    }`}
+                    id={`slide${index}`}
+                  >
+                    <img
+                      src={photo}
+                      alt={`PhotoNo ${index + 1}`}
+                      className="w-full"
+                    />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                      <a href={`#slide${index - 1}`} className="btn btn-circle">
+                        ❮
+                      </a>
+                      <a href={`#slide${index + 1}`} className="btn btn-circle">
+                        ❯
+                      </a>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             )}
           </div>
-          <div className="w-[50%] bg-white p-8">
-            <div className="p-4">
-              <h2 className="text-3xl font-semibold mb-4">{post.title}</h2>
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <p className="text-lg">
-                    <strong>Seat Capacity:</strong> {post.seatCapacity}
-                  </p>
-                  <p className="text-lg"></p>
-                  <p className="text-lg">
-                    <strong>Type:</strong> {post.type}
-                  </p>
-                  <p className="text-lg">
-                    <strong>Available:</strong> {post.available ? "Yes" : "No"}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-lg">
-                    <strong>Contact:</strong> {post.contact}
-                  </p>
-                  <p className="text-lg">
-                    <strong>Details:</strong> {post.details}
-                  </p>
-                  <p className="text-lg">
-                    <strong>Location:</strong> {post.location}
-                  </p>
-                </div>
+        </div>
+
+        {/* address  */}
+        <div class="bg-white m-2 pt-6 mockup-window border bg-base-300">
+          <div className="px-6">
+            <div class="chat-bubble mb-2">{post.title}</div>
+
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <p className="text-lg">
+                  <strong>Seat Capacity:</strong> {post.seatCapacity}
+                </p>
+                <p className="text-lg"></p>
+                <p className="text-lg">
+                  <strong>Type:</strong> {post.type}
+                </p>
+                <p className="text-lg">
+                  <strong>Available:</strong> {post.available ? "Yes" : "No"}
+                </p>
+              </div>
+              <div>
+                <p className="text-lg">
+                  <strong>Contact:</strong> {post.contact}
+                </p>
+                <p className="text-lg">
+                  <strong>Details:</strong> {post.details}
+                </p>
+                <p className="text-lg">
+                  <strong>Location:</strong> {post.location}
+                </p>
               </div>
 
               <div className="flex flex-col mt-4">
@@ -190,12 +222,14 @@ const PostDescription = () => {
             </div>
           </div>
         </div>
-        <div>
-          <div>
-            <div className="bg-success text-center mb-4">Show map</div>
-            {map}
-          </div>
+
+        {/* map  */}
+        <div class="col-span-2 m-2 pt-5 mockup-window border bg-base-300 ">
+          <div className="bg-success text-center">Show map</div>
+          <div className="px-6 h-[440px] py-2">{map}</div>
         </div>
+      </div>
+      <div>
         {post.userId === user.id && (
           <div>
             <h3 className="bg-custom font-bold  font-serif  text-center p-3 ">
@@ -212,7 +246,8 @@ const PostDescription = () => {
             </div>
           </div>
         )}
-
+      </div>
+      <div className="px-20">
         <RelatedPosts />
       </div>
     </div>

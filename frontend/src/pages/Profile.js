@@ -143,7 +143,14 @@ const Profile = () => {
           )}
           {role === "BUYER" && (
             <div>
-              <h1>Your Booked Property Lists: </h1>
+              <div class="chat chat-start">
+                <div class="chat-image avatar">
+                  <div class="w-10 rounded-full">
+                    <img alt="Tailwind CSS chat bubble component" src={image} />
+                  </div>
+                </div>
+                <div class="chat-bubble">Your Booked Property Lists: </div>
+              </div>
 
               {books.length !== 0 ? (
                 books.map((book) => <UserPostsDetails books={[book.post]} />)

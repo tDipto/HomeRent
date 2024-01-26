@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PostItem from "../Post/PostItem";
 
 const UserPostsDetails = ({ books }) => {
-  // console.log(books);
+  console.log(books);
   return (
     <div className="flex md:justify-start md:items-start justify-center items-center flex-wrap">
       {books.map((post) => (

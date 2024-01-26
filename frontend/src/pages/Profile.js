@@ -23,7 +23,7 @@ const Profile = () => {
     dispatch(fetchUser());
     dispatch(fetchBookedPost());
   }, []);
-
+  let bookArrays = null;
   const name = user?.name;
   const email = user?.email;
   const role = user?.role;
@@ -118,7 +118,7 @@ const Profile = () => {
       }}
     >
       {profileCard}
-      <div className="mockup-window border bg-base-300 ml-28 mt-20 mb-4 px-20">
+      <div className="mockup-window border bg-base-300 mr-6 ml-28 mt-20 mb-4 px-20">
         <div className="">
           {(role === "ADMIN" || role === "SELLER") && (
             <div>
@@ -153,7 +153,8 @@ const Profile = () => {
               </div>
 
               {books.length !== 0 ? (
-                books.map((book) => <UserPostsDetails books={[book.post]} />)
+                ((bookArrays = books.map((book) => book.post)),
+                (<UserPostsDetails books={bookArrays} />))
               ) : (
                 <p>You Book No property</p>
               )}

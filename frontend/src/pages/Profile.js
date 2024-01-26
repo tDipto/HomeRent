@@ -118,34 +118,41 @@ const Profile = () => {
       }}
     >
       {profileCard}
-      <div className="mockup-window border bg-base-300">
-        <div className="flex justify-center px-4 py-16 bg-base-200">Hello!</div>
-      </div>
-      <div className="w-1/2 flex flex-row flex-wrap p-10 bg-white justify-left items-center ml-20 my-2 mt-20">
-        {(role === "ADMIN" || role === "SELLER") && (
-          <div>
-            <h1 className="text-center text-black bg-blue-500 p-5">
-              Your Posted Property Lists:{" "}
-            </h1>
+      <div className="mockup-window border bg-base-300 ml-28 mt-20 mb-4 px-20">
+        <div className="">
+          {(role === "ADMIN" || role === "SELLER") && (
+            <div>
+              {/* <h1 className="text-center text-black bg-blue-500 p-5">
+                Your Posted Property Lists:{" "}
+              </h1> */}
+              <div class="chat chat-start">
+                <div class="chat-image avatar">
+                  <div class="w-10 rounded-full">
+                    <img alt="Tailwind CSS chat bubble component" src={image} />
+                  </div>
+                </div>
+                <div class="chat-bubble">Your Property Lists</div>
+              </div>
 
-            {posts.length !== 0 ? (
-              <UserPostsDetails books={posts} />
-            ) : (
-              <p>You haven't Post yet</p>
-            )}
-          </div>
-        )}
-        {role === "BUYER" && (
-          <div>
-            <h1>Your Booked Property Lists: </h1>
+              {posts.length !== 0 ? (
+                <UserPostsDetails books={posts} />
+              ) : (
+                <p>You haven't Post yet</p>
+              )}
+            </div>
+          )}
+          {role === "BUYER" && (
+            <div>
+              <h1>Your Booked Property Lists: </h1>
 
-            {books.length !== 0 ? (
-              books.map((book) => <UserPostsDetails books={[book.post]} />)
-            ) : (
-              <p>You Book No property</p>
-            )}
-          </div>
-        )}
+              {books.length !== 0 ? (
+                books.map((book) => <UserPostsDetails books={[book.post]} />)
+              ) : (
+                <p>You Book No property</p>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

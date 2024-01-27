@@ -17,9 +17,9 @@ const Home = () => {
         // Add blur effect
       }}
     >
-      {/* <Sidebar /> */}
-
-      <Posts />
+    <div>
+      <Posts/>
+    </div>
     </div>
   );
 };

@@ -49,30 +49,6 @@ const Main = () => {
     </div>
   </div>
 
-  <div>
-  <h1 className="text-center text-3xl font-bold py-4 bg-[#F9F3F2]">How to Book</h1>
-
-  <div className="grid grid-cols-1 md:grid-cols-3 bg-[#F9F3F2] p-4">
-    {/* Step 1 */}
-    <div className="text-center">
-      <h3 className="text-xl font-bold mb-2">Login Or Register</h3>
-      <img src="https://placekitten.com/200/200" alt="Step 1" className="mx-auto mb-4" />
-    </div>
-
-    {/* Step 2 */}
-    <div className="text-center">
-      <h3 className="text-xl font-bold mb-2">Explore Home</h3>
-      <img src="https://placekitten.com/200/201" alt="Step 2" className="mx-auto mb-4" />
-    </div>
-
-    {/* Step 3 */}
-    <div className="text-center">
-      <h3 className="text-xl font-bold mb-2">Book Home</h3>
-      <img src="https://placekitten.com/201/200" alt="Step 3" className="mx-auto mb-4" />
-    </div>
-  </div>
-</div>
-
 
 
 

@@ -112,7 +112,7 @@ const AddPost = () => {
 
   return (
     <div
-      className=" pt-28 bg-gray-200"
+      className=" pt-28 bg-gray-200 flex flex-col  w-[100%] mt-10"
       style={{ backgroundImage: `url(${blueBackgroundImage})` }}
     >
       <h1 className="ml-3 mb-4 text-3xl font-bold leading-none tracking-tight text-white md:text-5xl lg:text-6xl dark:text-white text-center">

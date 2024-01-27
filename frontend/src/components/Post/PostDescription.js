@@ -87,26 +87,13 @@ const PostDescription = () => {
       }}
     >
       {/* main */}
-      <div class="grid grid-col-2 mx-20 ">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mx-20 ">
         {/* image  */}
         <div class="bg-white pb-6 m-2 mockup-window border bg-base-300">
           <div className="pl-6 pb-2 ">
             <h3 className="chat-bubble  mb-4">Photos</h3>
-            {/* {post.photos && post.photos.length > 0 && (
-              <div className="flex flex-wrap">
-                {post.photos.map((photo, index) => (
-                  <div key={index} className="w-[40%]">
-                    <img
-                      src={photo}
-                      alt={`PhotoNo ${index + 1}`}
-                      className="rounded-md w-full"
-                    />
-                  </div>
-                ))}
-              </div>
-            )} */}
             {post.photos && post.photos.length > 0 && (
-              <div className="carousel w-[55%]">
+              <div className="carousel w-full md:w-[80%]">
                 {post.photos.map((photo, index) => (
                   <div
                     key={index}
@@ -140,7 +127,7 @@ const PostDescription = () => {
           <div className="px-6">
             <div class="chat-bubble mb-2">{post.title}</div>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <p className="text-lg">
                   <strong>Seat Capacity:</strong> {post.seatCapacity}
@@ -165,7 +152,7 @@ const PostDescription = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col mt-4">
+              <div className="flex flex-col items-center mt-4">
                 {/* <button
                 className="py-3 mb-4 bg-blue-800 w-full rounded-md hover:bg-blue-600 cursor-pointer"
                 type="button"
@@ -200,7 +187,7 @@ const PostDescription = () => {
 
                 {(role === "ADMIN" || role === "SELLER") &&
                   post.userId === user.id && (
-                    <div>
+                    <div className="py-3">
                       <button
                         className="py-3 bg-blue-800 w-full rounded-md hover:bg-blue-600 cursor-pointer mb-2"
                         type="button"
@@ -233,27 +220,39 @@ const PostDescription = () => {
         </div>
 
         {/* map  */}
-        <div class="col-span-2 m-2 pt-5 mockup-window border bg-base-300 ">
-          <div className="bg-success text-center">Show map</div>
+        <div class="col-span-2 m-2 pt-5 mockup-window border bg-base-300">
+          <div className="text-center py-2 px-4 rounded-t-md"style={{ backgroundColor: 'rgb(168, 162, 158)' }}>
+            <h3 className="text-white font-semibold">Show Map</h3>
+          </div>
           <div className="px-6 h-[440px] py-2">{map}</div>
         </div>
       </div>
       <div>
         {post.userId === user.id && (
-          <div>
-            <h3 className="bg-custom font-bold  font-serif  text-center p-3 ">
-              Booked Profiles
-            </h3>
+          <div class="col-span-2 ml-20 mr-20 m-2 pt-5 mockup-window border bg-base-300">
+          <div className="text-center py-2 px-4 rounded-t-md" style={{ backgroundColor: 'rgb(168, 162, 158)' }}>
+            <h3 className="text-white font-bold font-serif ml-4 mr-4">Booked Profiles</h3>
+          </div>
+          <div className="px-6 py-2 ml-4 mr-4">
             <div className="text-center">
               {usersInBookedId.length !== 0 ? (
                 usersInBookedId.map((profile, index) => (
-                  <ShowBookedProfile profiles={profile} count={index + 1} />
+                  <div className="border-b border-gray-300 py-3" key={index}>
+                    <p className="text-lg font-semibold mb-1">{`${index + 1}. ${profile.name}`}</p>
+                    <p className="text-gray-600">{profile.email}</p>
+                  </div>
                 ))
               ) : (
-                <p>No booked Student</p>
+                <p>No booked student</p>
               )}
             </div>
           </div>
+        </div>
+        
+        
+        
+        
+        
         )}
       </div>
       <div className="px-20">

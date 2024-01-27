@@ -26,36 +26,32 @@ const Main = () => {
     slidesToScroll: 1,
   };
   return (
-    <div className="bg-[#F9F3F2] ">
-      <div className="relative flex justify-end ">
-        {" "}
-        {/* Use flex container for alignment */}
-        <div className="w-[60%] pt-11 text-right">
-          {" "}
-          {/* Align text to the right */}
-          <Caraosel slides={slides} />
-        </div>
-        <div className="absolute bottom-4 left-8 w-[30%] text-left ">
-          {" "}
-          {/* Further adjust left margin */}
-          <div className=" text-lg text-gray-600 font-semibold text-center ">
-            {" "}
-            {/* Center the text */}
-            <h2 className="text-xl font-bold">Rent Your Dream Home</h2>
-            <p>
-              Discover a collection of beautiful homes for rent. Find the
-              perfect place to call home for your next adventure.
-            </p>
-          </div>
-          <button
-            onClick={goHome}
-            className="text-white bg-custom1 rounded-lg text-xl font-semibold shadow-md hover:bg-custom2 transition duration-300  "
-          >
-            Go Explore Home
-          </button>
-        </div>
-      </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 bg-[#F9F3F2]">
+  <div className="md:col-span-1 md:order-2 relative flex flex-col justify-center p-4 md:p-8 lg:p-12 text-center">
+    <div className="text-lg text-gray-600 font-semibold mb-4">
+      <h2 className="text-xl font-bold">Rent Your Dream Home</h2>
+      <p>
+        Discover a collection of beautiful homes for rent. Find the perfect place to call home for your next adventure.
+      </p>
     </div>
+    <button
+      onClick={goHome}
+      className="text-white bg-custom1 rounded-lg text-2xl md:text-xl font-semibold shadow-md hover:bg-custom2 transition duration-300 p-4 md:p-2 lg:p-4"
+    >
+      Go Explore Home
+    </button>
+  </div>
+
+
+  <div className="md:col-span-1 md:order-1 w-full pt-4 md:pt-11 text-center md:text-right">
+    <Caraosel slides={slides} />
+  </div>
+</div>
+
+
+
+  
+
   );
 };
 

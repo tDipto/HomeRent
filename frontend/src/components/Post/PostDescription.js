@@ -44,6 +44,7 @@ const PostDescription = () => {
   let map = null;
   let latitude, longitude;
   const coordinate = post?.coordinates;
+  const seatCapacity = post?.seatCapacity;
   if (coordinate) {
     [latitude, longitude] = coordinate.split(",");
     map = <GoogleMap latitude={latitude} longitude={longitude} />;
@@ -179,7 +180,15 @@ const PostDescription = () => {
                 </a>
               </button> */}
 
-                {(role === null || role === "BUYER" || !isRegistered) && (
+                {post.seatCapacity === 0 ? (
+                  <button
+                    className="py-3 bg-red-500 text-white w-full rounded-md cursor-not-allowed"
+                    type="button"
+                    disabled
+                  >
+                    Not Available
+                  </button>
+                ) : (
                   <button
                     onClick={handleBooked}
                     className="py-3 bg-custom1 text-white w-full rounded-md hover:bg-custom2 cursor-pointer"

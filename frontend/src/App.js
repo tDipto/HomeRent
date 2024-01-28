@@ -51,9 +51,8 @@ function App() {
   if (isLoggedIn) {
     routes = (
       <>
-        <Route path="/posts" element={<Posts />} />
         <Route path="/posts/create" element={<AddPost />} />
-        <Route path="/posts/:postId" element={<PostDescription />} />
+
         <Route path="/posts/:postId/delete" element={<DeletePost />} />
         <Route path="/posts/:postId/edit" element={<EditPost />} />
         <Route path="/books/:postId" element={<BookPost />} />
@@ -68,6 +67,8 @@ function App() {
       <>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/posts/:postId" element={<PostDescription />} />
         {/* <Route path="*" element={<Navigate to="/login" replace />} /> */}
       </>
     );

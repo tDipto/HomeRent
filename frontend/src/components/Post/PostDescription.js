@@ -81,7 +81,7 @@ const PostDescription = () => {
 
   return (
     <div
-      className="mt-24"
+      className="flex flex-col  w-[100%]   pt-1 mt-24"
       style={{
         backgroundImage: `url(${blueBackgroundImage})`,
       }}
@@ -248,9 +248,17 @@ const PostDescription = () => {
         
         )}
       </div>
-      <div className="px-20">
-        <RelatedPosts />
+
+      <div className="col-span-2 m-2 ml-20 mr-20 pt-5 mockup-window border bg-base-300">
+        <div className="text-center py-2 px-4 rounded-t-md" style={{ backgroundColor: 'rgb(168, 162, 158)' }}>
+          <h3 className="text-white font-semibold">Related Posts</h3>
+        </div>
+        <div className="px-6 py-2">
+          {/* Replace the following line with the content of your RelatedPosts component */}
+          <RelatedPosts />
+        </div>
       </div>
+
     </div>
   );
 };

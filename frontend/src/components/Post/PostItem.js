@@ -40,7 +40,7 @@ const PostItem = ({ post }) => {
           </p>
           <p className={`text-base ${textColorClass} text-gray-700 text-base flex items-center`}>
             {icon}
-            <span className="ml-2">{isAvailable}</span>
+            <span className="ml-2 font-bold">{isAvailable}</span>
           </p>
 
         </div>

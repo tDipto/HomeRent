@@ -9,10 +9,10 @@ const RelatedPosts = () => {
   );
 
   return (
-    <div className="mx-auto bg-white">
-      <div className="bg-slate-400 font-bold  font-serif  text-center p-3 ">
-        See more
-      </div>
+    <div className="mx-auto bg-base-300">
+        {/* <div className="bg-slate-400 font-bold  font-serif  text-center p-3 ">
+          See more
+        </div> */}
       {!isLoading && !isError && (
         <div className="flex md:justify-start md:items-start justify-center items-center flex-wrap">
           {relatedPosts.map((post) => (

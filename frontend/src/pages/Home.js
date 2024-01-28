@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import blueBackgroundImage from "../assets/bg-img.jpg";
 import { fetchPosts } from "../features/posts/postsSlice";
 import Posts from "./Posts";
+
+import blueBackgroundImage from "../assets/bg-img.jpg";
 
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPosts());
-  });
+  }, []);
+
   return (
     <div
       className="flex flex-col h-screen bg-cover bg-center"
@@ -17,9 +19,9 @@ const Home = () => {
         // Add blur effect
       }}
     >
-    <div>
-      <Posts/>
-    </div>
+      <div>
+        <Posts />
+      </div>
     </div>
   );
 };

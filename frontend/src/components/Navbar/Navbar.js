@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { fetchLoggedOutUser, fetchUser } from "../../features/auth/authSlice";
 import { fetchUserProfile } from "../../features/profile/profileSlice";
 import logo from "../Navbar/logo.png";
+
 import "./Navbar.css";
 // console.log(logo);
 const activeNavLinkClass = "active-nav-link";

@@ -1,12 +1,21 @@
-import React from "react";
+import React , {useEffect}from "react";
 import { useNavigate } from "react-router-dom";
 import Caraosel from "./Carousel/carasol";
-
-import { useDispatch } from "react-redux";
-
+import { useDispatch ,useSelector} from "react-redux";
+import { fetchPosts } from "../features/posts/postsSlice";
 const Main = () => {
+
+  
   const navigate = useNavigate();
+  // const { posts, isLoading, isError, error } = useSelector(
+  //   (state) => state.posts
+  // );
+  // const vacants = posts.filter((post)=> post.seatCapacity>0);
+  // console.log(vacants);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchPosts());
+  });
 
   const goHome = () => {
     navigate("/home");
@@ -47,6 +56,11 @@ const Main = () => {
     <div className="md:col-span-1 md:order-1 w-full pt-4 md:pt-11 text-center md:text-right">
       <Caraosel slides={slides} />
     </div>
+    {/* {vacants.map(post=><div key={post.id}>
+      <h1>
+       {post.location}
+      </h1>
+      </div>)} */}
   </div>
 
 

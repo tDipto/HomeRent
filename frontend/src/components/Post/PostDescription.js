@@ -38,6 +38,7 @@ const PostDescription = () => {
   const navigate = useNavigate();
 
   const [post, setPost] = useState({});
+ 
   const [message, setMessage] = useState("");
   const { postId } = useParams();
 
@@ -51,6 +52,8 @@ const PostDescription = () => {
   }
 
   const role = user?.role;
+
+ 
 
   const handleBooked = () => {
     if (isLoggedIn) {
@@ -67,8 +70,8 @@ const PostDescription = () => {
     });
     dispatch(related(postId));
 
-    dispatch(fetchUser());
-    dispatch(fetchAllUsers());
+   if(isLoggedIn) {dispatch(fetchUser()); dispatch(fetchAllUsers());}
+   
   }, [postId, dispatch]);
 
   const bookeditems = post.book;
@@ -129,84 +132,89 @@ const PostDescription = () => {
 
         {/* address  */}
         <div class="bg-white m-2 pt-6 mockup-window border bg-base-300">
-  <div className="px-6">
-    <div class="chat-bubble mb-2 text-xl font-semibold">{post.title}</div>
+          <div className="px-6">
+            <div class="chat-bubble mb-2 text-xl font-semibold">{post.title}</div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div>
-        <p className="text-lg">
-          <strong>Seat Capacity:</strong> {post.seatCapacity}
-        </p>
-        <p className="text-lg">
-          <strong>Type:</strong> {post.type}
-        </p>
-        <p className="text-lg">
-          <strong>Available:</strong> {post.available ? "Yes" : "No"}
-        </p>
-      </div>
-      <div>
-        <p className="text-lg">
-          <strong>Contact:</strong> {post.contact}
-        </p>
-        <p className="text-lg">
-          <strong>Details:</strong> {post.details}
-        </p>
-        <p className="text-lg">
-          <strong>Location:</strong> {post.location}
-        </p>
-      </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <p className="text-lg">
+                  <strong>Seat Capacity:</strong> {post.seatCapacity}
+                </p>
+                <p className="text-lg">
+                  <strong>Type:</strong> {post.type}
+                </p>
+                <p className="text-lg">
+                  <strong>Available:</strong> {post.available ? "Yes" : "No"}
+                </p>
+              </div>
+              <div>
+                <p className="text-lg">
+                  <strong>Contact:</strong> {post.contact}
+                </p>
+                <p className="text-lg">
+                  <strong>Details:</strong> {post.details}
+                </p>
+                <p className="text-lg">
+                  <strong>Location:</strong> {post.location}
+                </p>
+              </div>
+            </div>
 
-      <div className="flex flex-col mt-4">
-        <div className="button-container">
-          {post.seatCapacity === 0 ? (
-            <button
-              className="py-3 bg-red-500 text-white rounded-md cursor-not-allowed w-full"
-              type="button"
-              disabled
-            >
-              Not Available
-            </button>
-          ) : (
-            <button
-              onClick={handleBooked}
-              className="py-3 bg-custom1 text-white rounded-md hover:bg-custom2 cursor-pointer w-full"
-              type="button"
-            >
-              Book Now
-            </button>
-          )}
+            <div className="flex flex-col items-center justify-center mt-4">
+              <div className="flex flex-col mt-3 w-full">
+                <div className="button-container justify-center w-[50%]">
+                  {post.seatCapacity === 0 ? (
+                    <button
+                      className="py-2 bg-red-500 text-white rounded-md cursor-not-allowed w-full"
+                      type="button"
+                      disabled
+                    >
+                      Not Available
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleBooked}
+                      className="py-2 bg-custom1 text-white rounded-md hover:bg-custom2 cursor-pointer w-full"
+                      type="button"
+                    >
+                      Book Now
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {(role === "ADMIN" || role === "SELLER") && post.userId === user.id && (
+                <div className="flex flex-col mt-3 mb-3 w-full">
+                  <div className="button-container w-[50%] mb-3">
+                    <button
+                      className="py-2 bg-blue-800 rounded-md hover:bg-blue-600 cursor-pointer w-full"
+                      type="button"
+                    >
+                      <Link to={`/posts/${postId}/edit`} className="text-white">
+                        Edit
+                      </Link>
+                    </button>
+                  </div>
+
+                  <div className="button-container w-[50%]">
+                    <button
+                      className="py-2 bg-red-800 rounded-md hover:bg-red-600 cursor-pointer w-full"
+                      type="button"
+                    >
+                      <Link to={`/posts/${postId}/delete`} className="text-white">
+                        Delete
+                      </Link>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+
+            {<p className="font-bold text-red-600">{message}</p>}
+          </div>
         </div>
 
-        {(role === "ADMIN" || role === "SELLER") && post.userId === user.id && (
-          <div className="py-3">
-            <div className="button-container">
-              <button
-                className="py-3 mb-3 bg-blue-800 rounded-md hover:bg-blue-600 cursor-pointer w-full"
-                type="button"
-              >
-                <Link to={`/posts/${postId}/edit`} className="text-white">
-                  Edit
-                </Link>
-              </button>
-            </div>
-
-            <div className="button-container">
-              <button
-                className="py-3 bg-red-800 rounded-md hover:bg-red-600 cursor-pointer w-full"
-                type="button"
-              >
-                <Link to={`/posts/${postId}/delete`} className="text-white">
-                  Delete
-                </Link>
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-      {<p className="font-bold text-red-600">{message}</p>}
-    </div>
-  </div>
-</div>
 
 
 
@@ -215,7 +223,7 @@ const PostDescription = () => {
         {/* map  */}
         <div class="col-span-2 m-2 pt-5 mockup-window border bg-base-300">
           <div className="text-center py-2 px-4 rounded-t-md"style={{ backgroundColor: 'rgb(168, 162, 158)' }}>
-            <h3 className="text-white font-semibold">Show Map</h3>
+            <h2 className="text-white py-3 font-semibold">Show Map</h2>
           </div>
           <div className="px-6 h-[440px] py-2">{map}</div>
         </div>
@@ -255,7 +263,7 @@ const PostDescription = () => {
         </div>
         <div className="px-6 py-2">
           {/* Replace the following line with the content of your RelatedPosts component */}
-          <RelatedPosts />
+          <RelatedPosts/>
         </div>
       </div>
 

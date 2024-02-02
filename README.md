@@ -44,24 +44,38 @@ Please follow the below instructions to run this branch in your machine:
 # Set up .env for Frontend
 
 ```sh
-    REACT_APP_CLOUDINARY_CLOUD_NAME=
-    REACT_APP_MAP_KEY=
+REACT_APP_CLOUDINARY_CLOUD_NAME=
+REACT_APP_MAP_KEY=
 
 ```
 
 # Set up .env for backend
 
 ```sh
-    DATABASE_URL="postgresql://postgres:password@localhost:5432/testDB?schema=public"
-    JWT_SECRET_KEY=
-    PORT=
-    CLOUDINARY_CLOUD_NAME=
-    CLOUDINARY_API_KEY=
-    CLOUDINARY_API_SECRET=
+DATABASE_URL="postgresql://postgres:password@localhost:5432/testDB?schema=public"
+JWT_SECRET_KEY=
+PORT=
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
 ```
 
 # Swagger Documentation
 
-```sh
-    http://localhost:5000/api-docs
-```
+Live here - http://localhost:5000/api-docs
+
+# Features
+
+![Home](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/Home%20page.png)
+![Signup](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/Signup.png)
+![Login](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/Login.png)
+![Apartment List](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/apartment%20list.png)
+![Apartment Details](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/apartment%20details.png)
+![Apartment Location](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/apartment%20location.png)
+![Book Apartment](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/Book%20apartment.png)
+![Book Property](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/booked%20property.png)
+![Book Property List](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/booked%20property%20list.png)
+![Not Available](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/book%20student%20not%20available.png)
+![List of Book Student](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/list%20of%20booked%20students.png)
+![User Profile](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/Profile%20Management.png)
+![User Posted Property](https://github.com/MdShimulMahmud/software-engineering-lab/blob/master/images/your%20porperty%20list.png)

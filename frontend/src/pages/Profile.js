@@ -23,12 +23,13 @@ const Profile = () => {
     dispatch(fetchUser());
     dispatch(fetchBookedPost());
   }, []);
-
+  let bookArrays = null;
   const name = user?.name;
   const email = user?.email;
   const role = user?.role;
   const posts = user?.posts;
   const book = user?.book;
+  const phone1 = profile?.phone;
 
   let image = user?.profile?.images[0];
 
@@ -81,7 +82,7 @@ const Profile = () => {
             >
               <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
             </svg>
-            {phone || "Not provided"}
+            {phone1 || "Not provided"}
           </p>
           <p class="pt-2 px-12 text-gray-600 text-md  flex items-center justify-left ">
             <svg
@@ -118,7 +119,7 @@ const Profile = () => {
       }}
     >
       {profileCard}
-      <div className="mockup-window border bg-base-300 ml-28 mt-20 mb-4 px-20">
+      <div className="mockup-window border bg-base-300 mr-6 ml-28 mt-20 mb-4 px-20">
         <div className="">
           {(role === "ADMIN" || role === "SELLER") && (
             <div>
@@ -143,10 +144,18 @@ const Profile = () => {
           )}
           {role === "BUYER" && (
             <div>
-              <h1>Your Booked Property Lists: </h1>
+              <div class="chat chat-start">
+                <div class="chat-image avatar">
+                  <div class="w-10 rounded-full">
+                    <img alt="Tailwind CSS chat bubble component" src={image} />
+                  </div>
+                </div>
+                <div class="chat-bubble">Your Booked Property Lists: </div>
+              </div>
 
               {books.length !== 0 ? (
-                books.map((book) => <UserPostsDetails books={[book.post]} />)
+                ((bookArrays = books.map((book) => book.post)),
+                (<UserPostsDetails books={bookArrays} />))
               ) : (
                 <p>You Book No property</p>
               )}

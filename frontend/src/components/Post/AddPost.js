@@ -29,7 +29,7 @@ const AddPost = () => {
       data.append("tags", "multiple_images");
       try {
         const res = await axios.post(
-          `https://api.cloudinary.com/v1_1/du55ossud/image/upload`,
+          `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
           data
         );
 
@@ -116,7 +116,7 @@ const AddPost = () => {
 
   return (
     <div
-      className=" pt-28 bg-gray-200"
+      className=" pt-28 bg-gray-200 flex flex-col  w-[100%] mt-10"
       style={{ backgroundImage: `url(${blueBackgroundImage})` }}
     >
       <h1 className="ml-3 mb-4 text-3xl font-bold leading-none tracking-tight text-white md:text-5xl lg:text-6xl dark:text-white text-center">

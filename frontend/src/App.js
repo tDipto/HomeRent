@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+// import { Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
@@ -52,7 +53,7 @@ function App() {
       <>
         <Route path="/posts" element={<Posts />} />
         <Route path="/posts/create" element={<AddPost />} />
-        <Route path="/posts/:postId" element={<PostDescription />} />
+
         <Route path="/posts/:postId/delete" element={<DeletePost />} />
         <Route path="/posts/:postId/edit" element={<EditPost />} />
         <Route path="/books/:postId" element={<BookPost />} />

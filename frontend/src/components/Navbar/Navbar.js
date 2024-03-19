@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { fetchLoggedOutUser, fetchUser } from "../../features/auth/authSlice";
 import { fetchUserProfile } from "../../features/profile/profileSlice";
 import logo from "../Navbar/logo.png";
+
 import "./Navbar.css";
 // console.log(logo);
 const activeNavLinkClass = "active-nav-link";
@@ -24,7 +25,6 @@ const Navbar = () => {
 
   const name = user?.name;
   // console.log(user);
-
   const handleLogout = async () => {
     dispatch(fetchLoggedOutUser());
     localStorage.clear();
@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-custom text-black fixed top-0 w-full z-20 md:px-20 sm:px-2">
+    <div className="navbar bg-custom text-black fixed top-0 w-full z-20 md:px-20 sm:px-2 mb-4">
       <div className="flex-1">
         <Link to="/" className="flex flex-row">
           <div>

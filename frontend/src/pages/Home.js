@@ -4,6 +4,8 @@ import blueBackgroundImage from "../assets/bg-img.jpg";
 import { fetchPosts } from "../features/posts/postsSlice";
 import Posts from "./Posts";
 
+import blueBackgroundImage from "../assets/bg-img.jpg";
+
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -11,15 +13,15 @@ const Home = () => {
   });
   return (
     <div
-      className="flex flex-col h-screen bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${blueBackgroundImage})`,
-        // Add blur effect
-      }}
+    className="flex flex-row  w-[100%]   pt-1 mt-10"
+    style={{
+      backgroundImage: `url(${blueBackgroundImage})`,
+      // Add blur effect
+    }}
     >
-      {/* <Sidebar /> */}
-
-      <Posts />
+    <div>
+      <Posts/>
+    </div>
     </div>
   );
 };

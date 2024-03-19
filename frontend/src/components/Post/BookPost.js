@@ -29,7 +29,7 @@ const BookPost = () => {
     seatCapacity: 0,
   });
 
-  console.log(formData);
+  // console.log(formData);
   const handleInputChange = (e) => {
     const { name, value, type } = e.target;
     const newValue = type === "number" ? parseInt(value) : value;

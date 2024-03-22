@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import blueBackgroundImage from "../../assets/bg-img.jpg";
 import { api } from "../../utils/api";
 import axiosInstance from "../../utils/axios";
+import Spinner from "../Spinner/Spinner";
 const AddPost = () => {
   const { isLoading, isError, error, isLoggedIn, user, isRegistered } =
     useSelector((state) => state.auth);
@@ -19,6 +20,9 @@ const AddPost = () => {
     const files = e.target.files;
 
     const data = new FormData();
+
+    console.log(files);
+
     for (let i = 0; i < files.length; i++) {
       data.append("file", files[i]);
       data.append("upload_preset", "software");
@@ -106,7 +110,7 @@ const AddPost = () => {
       setMessage("Please fill up all the input fields!");
       setTimeout(() => {
         setMessage("");
-      }, 2000);
+      }, 5000);
     }
   };
 
@@ -183,7 +187,7 @@ const AddPost = () => {
               type="text"
               id="location"
               name="location"
-              value={formData.location.toLowerCase().trim()}
+              value={formData.location}
               onChange={handleInputChange}
               placeholder="Location"
               className="w-full border rounded-md p-2 mb-4 text-black"
@@ -282,7 +286,11 @@ const AddPost = () => {
           className="mb-4"
         />
 
-        {loading && <p className="text-red-500">Uploading...</p>}
+        {loading && (
+          <p className="text-red-500">
+            <Spinner />
+          </p>
+        )}
         {<p className="text-red-600 m-3">{message}</p>}
         {formData.photos.length > 0 && (
           <div className="mb-4 flex flex-row">

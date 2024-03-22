@@ -80,6 +80,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/home" element={<Home />} />
         {routes}
+        <Route path="/posts/:postId" element={<PostDescription />} />
       </Routes>
       <Footer />
     </Router>

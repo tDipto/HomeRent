@@ -86,7 +86,7 @@ const UpdateProfile = () => {
         className=" w-[90vh] h-auto  mx-auto my-5 p-4 bg-gray-100 rounded-lg"
       >
         <label>
-          Address:
+          <span style={{fontStyle: 'italic'}}>Address:</span>
           <input
             type="text"
             name="address"
@@ -97,7 +97,7 @@ const UpdateProfile = () => {
           />
         </label>
         <label>
-          Phone:
+          <span style={{fontStyle: 'italic'}}>Phone:</span>
           <input
             type="text"
             name="phone"
@@ -107,7 +107,7 @@ const UpdateProfile = () => {
             className="w-full border rounded-md p-2 mb-4"
           />
         </label>
-        <h2> Upload profile photo:</h2>
+        <h2><span style={{fontStyle: 'italic'}}>Upload profile photo:</span></h2>
         <input
           type="file"
           onChange={handleImageUpload}

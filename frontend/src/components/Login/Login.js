@@ -63,6 +63,7 @@ const Login = () => {
             className="w-[80vh] h-[70vh] mr-10"
           />
         </div>
+        <div>Adding authentcation</div>
         <div className="flex justify-center items-center w-[80vh] h-[90%]">
           <form
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[70vh] h-[90%]"
@@ -120,6 +121,12 @@ const Login = () => {
             <div className="mt-4 text-center">
               <h3>
                 Don't have an account? Create a new account!
+                <strong className="m-1 text-indigo-700">
+                  <Link to="/register">Register</Link>
+                </strong>
+              </h3>
+              <h3>
+                Forgot Password
                 <strong className="m-1 text-indigo-700">
                   <Link to="/register">Register</Link>
                 </strong>

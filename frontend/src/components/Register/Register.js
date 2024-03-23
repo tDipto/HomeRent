@@ -38,7 +38,7 @@ const Registration = () => {
       // const res = await axiosInstance.post("/profile/create");
       navigate("/login");
     } catch (error) {
-      console.error("Error:", error.response.data);
+      console.error("Error:", error.response.message);
       setError("Registration failed. Please try again.");
     } finally {
       setIsLoading(false);

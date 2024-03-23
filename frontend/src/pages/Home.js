@@ -4,7 +4,7 @@ import blueBackgroundImage from "../assets/bg-img.jpg";
 import { fetchPosts } from "../features/posts/postsSlice";
 import Posts from "./Posts";
 
-import blueBackgroundImage from "../assets/bg-img.jpg";
+// import blueBackgroundImage from "../assets/bg-img.jpg";
 
 const Home = () => {
   const dispatch = useDispatch();

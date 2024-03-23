@@ -61,6 +61,7 @@ function App() {
         {/* <Route path="/profile/create" element={<CreateProfile />} /> */}
         <Route path="/profile/edit" element={<UpdateProfile />} />
         {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+        
       </>
     );
   } else {
@@ -68,6 +69,7 @@ function App() {
       <>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
+        
         {/* <Route path="*" element={<Navigate to="/login" replace />} /> */}
       </>
     );
@@ -80,6 +82,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/home" element={<Home />} />
         {routes}
+        <Route path="/posts/:postId" element={<PostDescription />} />
       </Routes>
       <Footer />
     </Router>

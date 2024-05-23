@@ -4,11 +4,11 @@ Please follow the below instructions to run this branch in your machine:
 
 2. Clone this repository -
    ```sh
-   git clone https://github.com/MdShimulMahmud/software-engineering-lab.git
+   git clone https://github.com/tDipto/HomeRent.git
    ```
 3. Go to the cloned project directory
    ```sh
-   cd software-engineering-lab
+   cd HomeRent
    ```
 4. Go to frontend
    ```sh
